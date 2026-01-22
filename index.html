@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sharif Pharmacy Kotla - Order authentic medicines, baby products, and health devices online in Kotla Arab Ali Khan.">
+<meta name="keywords" content="Pharmacy Kotla, Medical Store Kotla, Online Medicine Pakistan, Sharif Pharmacy">
+    <title>Sharif Pharmacy - Complete Medical Store</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="icon" type="image/x-icon" href="#">
+   
+    <link rel="stylesheet" href="style.css">
+
+
+<style>
+    /* Prescription Box Enhancements */
+.prescription-box {
+    background: #eef7e3;
+    border: 2px dashed var(--primary-green);
+    border-radius: 20px;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.select-btn {
+    background: var(--dark-green);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Prescription Preview Card */
+.presc-preview-card {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    margin-top: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    animation: slideIn 0.4s ease-out;
+}
+
+.preview-header {
+    background: #f8f9fa;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    color: var(--primary-green);
+    font-weight: 700;
+}
+
+.preview-body {
+    padding: 20px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+#presc-img-preview {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid #eee;
+}
+
+.preview-info p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.presc-btn-final {
+    background: #25D366;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.remove-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #999;
+    cursor: pointer;
+}
+
+@keyframes slideIn {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@media (max-width: 600px) {
+    .preview-body { flex-direction: column; text-align: center; }
+    #presc-img-preview { width: 100%; height: 200px; }
+    .prescription-box { flex-direction: column; text-align: center; }
+}
+
+
+</style>
+
+
+
+
+
+</head>
+<body>
+
+    <!-- TOP BAR -->
+    <div class="top-bar">
+        <div class="container flex justify-between">
+            <div class="flex" style="gap:20px;">
+                <span><i class="fas fa-map-marker-alt"></i> Kotla Arab Ali Khan, Pakistan</span>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="container flex justify-between">
+            <a href="index.html" class="logo">
+                <i class="fas fa-heart-pulse"></i> SHARIF PHARMACY
+            </a>
+    <!-- Search Bar -->
+
+           <div class="search-container">
+    <input type="text" id="global-search" placeholder="Search medicines..." onkeyup="handleGlobalSearch(event)" autocomplete="off">
+    <i class="fas fa-search" onclick="triggerSearch()"></i>
+    
+    <div id="search-suggestions" class="suggestions-box"></div>
+</div>
+
+            <!-- Added Nav Links -->
+            <div class="nav-links">
+                <a href="index.html" style="color:var(--primary-green);">Home</a>
+                <a href="products.html">All Products</a>
+            </div>
+            
+            <!-- Cart Display -->
+            <div class="cart-display" onclick="openCartModal()">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="total-price">Rs. 0.00</span>
+                <div class="cart-count-badge" id="cart-count">0</div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Pharmacy</h1>
+                <div class="hero-desc">
+                    <p>Genuine medicines delivered across Pakistan to your doorstep.</p>
+                </div>
+            </div>
+            <img src="https://placehold.co/400x500/transparent/png?text=Pharmacist" alt="Person" class="hero-image">
+        </div>
+    </header>
+
+
+
+
+
+
+
+
+<!-- PRESCRIPTION SECTION -->
+<section class="prescription-upload mt-50">
+    <div class="container">
+        <div class="prescription-box">
+            <div class="presc-content">
+                <div class="presc-icon"><i class="fas fa-file-prescription"></i></div>
+                <div class="presc-text">
+                    <h3>Order via Prescription</h3>
+                    <p>Select your prescription photo below to start your order.</p>
+                </div>
+            </div>
+            
+            <div class="upload-controls">
+                <!-- Custom Upload Button -->
+                <input type="file" id="presc-file" accept="image/*" style="display: none;" onchange="previewImage(event)">
+                <button class="select-btn" onclick="document.getElementById('presc-file').click()">
+                    <i class="fas fa-camera"></i> Select Photo
+                </button>
+            </div>
+        </div>
+
+        <!-- Hidden Preview Area (Shows only after picking a file) -->
+        <div id="presc-preview-container" class="presc-preview-card" style="display: none;">
+            <div class="preview-header">
+                <span><i class="fas fa-check-circle"></i> Prescription Selected</span>
+                <button onclick="removeImage()" class="remove-btn">&times;</button>
+            </div>
+            <div class="preview-body">
+                <img id="presc-img-preview" src="" alt="Prescription Preview">
+                <div class="preview-info">
+                    <p>Now click the button below to send this on our WhatsApp.</p>
+                    <button class="presc-btn-final" onclick="sendPrescriptionToWA()">
+                        Send on WhatsApp <i class="fab fa-whatsapp"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+    <div class="container">
+        <!-- CATEGORIES -->
+        <div class="categories">
+            <div class="cat-item">
+                <img src="https://placehold.co/100x100/pink/white?text=Bone" class="cat-img" alt="Bone">
+                <span class="cat-name">Bone & Joint</span>
+            </div>
+            <div class="cat-item">
+                <img src="https://placehold.co/100x100/orange/white?text=Diab" class="cat-img" alt="Diabetes">
+                <span class="cat-name">Diabetes</span>
+            </div>
+            <div class="cat-item">
+                <img src="https://placehold.co/100x100/red/white?text=Kidney" class="cat-img" alt="Kidney">
+                <span class="cat-name">Kidney</span>
+            </div>
+            <div class="cat-item">
+                <img src="https://placehold.co/100x100/purple/white?text=Liver" class="cat-img" alt="Liver">
+                <span class="cat-name">Liver</span>
+            </div>
+            <div class="cat-item">
+                <img src="https://placehold.co/100x100/blue/white?text=Resp" class="cat-img" alt="Respiratory">
+                <span class="cat-name">Respiratory</span>
+            </div>
+            <div class="cat-item">
+                <img src="https://placehold.co/100x100/yellow/white?text=Eye" class="cat-img" alt="Eye">
+                <span class="cat-name">Eye Care</span>
+            </div>
+        </div>
+
+        <!-- SERVICES SECTION -->
+        <div class="grid-4 mt-50 text-center">
+            <div class="service-box">
+                <div class="service-icon"><i class="fas fa-truck-fast"></i></div>
+                <div class="service-title">Fast Delivery</div>
+                <div class="service-text">Delivery within 2 hours</div>
+            </div>
+            <div class="service-box">
+                <div class="service-icon"><i class="fas fa-user-doctor"></i></div>
+                <div class="service-title">24/7 Support</div>
+                <div class="service-text">Online consultation available</div>
+            </div>
+            <div class="service-box">
+                <div class="service-icon"><i class="fas fa-shield-halved"></i></div>
+                <div class="service-title">Secure Payment</div>
+                <div class="service-text">100% secure payment</div>
+            </div>
+            <div class="service-box">
+                <div class="service-icon"><i class="fas fa-certificate"></i></div>
+                <div class="service-title">Authentic</div>
+                <div class="service-text">100% genuine products</div>
+            </div>
+        </div>
+
+        <!-- BEST DEALS GRID -->
+        <div class="section-header mt-50">
+            <div>
+                <h2 class="section-title">Todays best deals</h2>
+                <h2 class="section-title">for you!</h2>
+            </div>
+            <a href="products.html" style="font-size:13px; font-weight:700;">SEE ALL &rarr;</a>
+        </div>
+
+        <div class="grid-4">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <span class="badge">20% Off</span>
+                <div class="prod-img-container"><img src="https://placehold.co/150x150?text=Bottle" class="prod-img"></div>
+                <div class="prod-title">Dietary Supplement</div>
+                <div class="rating"><i class="fas fa-star"></i> 4.5</div>
+                <div class="prod-footer">
+                    <button class="btn-add" onclick="addToCart(1500, 'Dietary Supplement')">+ Add</button>
+                    <div><span style="font-size:12px; text-decoration:line-through; color:#999;">Rs. 2000</span> <span class="price">Rs. 1500</span></div>
+                </div>
+            </div>
+            <!-- Product 2 -->
+            <div class="product-card">
+                <div class="prod-img-container"><img src="https://placehold.co/150x150?text=Gloves" class="prod-img"></div>
+                <div class="prod-title">Nitrile Disposable Gloves</div>
+                <div class="rating"><i class="fas fa-star"></i> 4.5</div>
+                <div class="prod-footer">
+                    <button class="btn-add" onclick="addToCart(500, 'Nitrile Gloves')">+ Add</button>
+                    <span class="price">Rs. 500</span>
+                </div>
+            </div>
+            <!-- Product 3 -->
+            <div class="product-card">
+                <div class="prod-img-container"><img src="https://placehold.co/150x150?text=Vitamins" class="prod-img"></div>
+                <div class="prod-title">Womens Multi Vitamins</div>
+                <div class="rating"><i class="fas fa-star"></i> 4.5</div>
+                <div class="prod-footer">
+                    <button class="btn-add" onclick="addToCart(2500, 'Multi Vitamins')">+ Add</button>
+                    <span class="price">Rs. 2500</span>
+                </div>
+            </div>
+            <!-- Product 4 -->
+            <div class="product-card">
+                <div class="prod-img-container"><img src="https://placehold.co/150x150?text=Soap" class="prod-img"></div>
+                <div class="prod-title">Liquid Hand Soap</div>
+                <div class="rating"><i class="fas fa-star"></i> 4.5</div>
+                <div class="prod-footer">
+                    <button class="btn-add" onclick="addToCart(450, 'Liquid Soap')">+ Add</button>
+                    <span class="price">Rs. 450</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Doctor BANNER -->
+        <div class="banner-single">
+            <div class="banner-text">
+                <h3 style="font-size: 28px; margin-bottom: 15px;">Don't have a<br>Prescription?</h3>
+                <p style="font-size:14px; margin-bottom: 15px;">Start online consultations with our certified doctors.</p>
+                <button class="btn-black"><a href="https://wa.me/+923329588433">Start Consultations</a></button>
+            </div>
+            <img src="https://placehold.co/200x250/transparent/png?text=Doctor" class="banner-img-right">
+        </div>
+
+        <!-- TRENDING PRODUCTS -->
+        <div class="mt-50">
+            <h2 class="section-title" style="margin-bottom: 20px;">Trending products</h2>
+            <div class="grid-4">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <span class="badge">10% Off</span>
+                    <div class="prod-img-container"><img src="https://placehold.co/150x150?text=Collagen" class="prod-img"></div>
+                    <div class="prod-title">Gencell Collagen Peptides</div>
+                    <div class="rating"><i class="fas fa-star"></i> 4.5</div>
+                    <div class="prod-footer">
+                        <button class="btn-add" onclick="addToCart(3000, 'Collagen Peptides')">+ Add</button>
+                        <span class="price">Rs. 3000</span>
+                    </div>
+                </div>
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="prod-img-container"><img src="https://placehold.co/150x150?text=D3" class="prod-img"></div>
+                    <div class="prod-title">Nature's Bounty D3</div>
+                    <div class="rating"><i class="fas fa-star"></i> 5.0</div>
+                    <div class="prod-footer">
+                        <button class="btn-add" onclick="addToCart(1800, 'Vitamin D3')">+ Add</button>
+                        <span class="price">Rs. 1800</span>
+                    </div>
+                </div>
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <div class="prod-img-container"><img src="https://placehold.co/150x150?text=D+1000" class="prod-img"></div>
+                    <div class="prod-title">Vitamin D 1000 IU</div>
+                    <div class="rating"><i class="fas fa-star"></i> 4.2</div>
+                    <div class="prod-footer">
+                        <button class="btn-add" onclick="addToCart(1200, 'Vitamin D 1000')">+ Add</button>
+                        <span class="price">Rs. 1200</span>
+                    </div>
+                </div>
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <div class="prod-img-container"><img src="https://placehold.co/150x150?text=Multi" class="prod-img"></div>
+                    <div class="prod-title">Physician's Daily Multi</div>
+                    <div class="rating"><i class="fas fa-star"></i> 4.8</div>
+                    <div class="prod-footer">
+                        <button class="btn-add" onclick="addToCart(2200, 'Daily Multivitamin')">+ Add</button>
+                        <span class="price">Rs. 2200</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BRANDS SECTION -->
+        <div class="brands-section mt-50">
+            <h3 class="section-title" style="font-size:20px; margin-bottom:20px;">Trusted by top brands</h3>
+            <div class="brands-row">
+                <div class="brand-item">Pfizer</div>
+                <div class="brand-item">GSK</div>
+                <div class="brand-item">Novartis</div>
+                <div class="brand-item">Sanofi</div>
+                <div class="brand-item">Merck</div>
+                <div class="brand-item">Abbott</div>
+            </div>
+        </div>
+
+        <!-- 3 Discount BANNER -->
+        <div class="grid-3 mt-50">
+            <div class="banner-card-small bg-peach">
+                <h4>Maternal Health</h4>
+                <a href="products.html" style="font-size:12px; margin-top:5px;">BROWSE &rarr;</a>
+                <h2 style="margin-top:auto;">5% Off</h2>
+                <img src="https://placehold.co/80x80/transparent/png?text=Mom" style="position:absolute; right:10px; bottom:10px;">
+            </div>
+            <div class="banner-card-small bg-blue">
+                <h4>Headache Solutions</h4>
+                <a href="products.html" style="font-size:12px; margin-top:5px;">BROWSE &rarr;</a>
+                <h2 style="margin-top:auto;">10% Off</h2>
+                <img src="https://placehold.co/80x80/transparent/png?text=Man" style="position:absolute; right:10px; bottom:10px;">
+            </div>
+            <div class="banner-card-small bg-yellow">
+                <h4>Cold Relief</h4>
+                <a href="products.html" style="font-size:12px; margin-top:5px;">BROWSE &rarr;</a>
+                <h2 style="margin-top:auto;">Flat 10%</h2>
+                <img src="https://placehold.co/80x80/transparent/png?text=Cold" style="position:absolute; right:10px; bottom:10px;">
+            </div>
+        </div>
+
+        <!-- HEALTH BLOG SECTION -->
+        <div class="mt-80">
+            <div class="flex justify-between" style="margin-bottom:20px;">
+                <h2 class="section-title">Health Articles & News</h2>
+                <a href="#" style="font-size:13px; font-weight:700;">READ ALL &rarr;</a>
+            </div>
+            <div class="grid-3">
+                <div class="blog-card">
+                    <img src="https://placehold.co/400x250/eee/333?text=Skin+Care" class="blog-img">
+                    <div class="blog-content">
+                        <div class="blog-date">DEC 01, 2023</div>
+                        <div class="blog-title">5 Tips for maintaining healthy skin in winter</div>
+                        <span class="read-more">Read Article</span>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <img src="https://placehold.co/400x250/eee/333?text=Vitamins" class="blog-img">
+                    <div class="blog-content">
+                        <div class="blog-date">NOV 28, 2023</div>
+                        <div class="blog-title">Understanding the importance of Vitamin D3</div>
+                        <span class="read-more">Read Article</span>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <img src="https://placehold.co/400x250/eee/333?text=Heart+Health" class="blog-img">
+                    <div class="blog-content">
+                        <div class="blog-date">NOV 20, 2023</div>
+                        <div class="blog-title">Cardiology experts share heart health secrets</div>
+                        <span class="read-more">Read Article</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ SECTION -->
+        <div class="faq-section text-center">
+            <h2 class="section-title">Got questions?</h2>
+            <div style="max-width:800px; margin:30px auto; text-align:left; padding:0 20px;">
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        How do I start online consultation?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Click on the "Start Consultation" button on the homepage and follow the steps.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        Are your online doctors qualified?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Yes, all our doctors are certified and experienced professionals.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- NEWSLETTER SECTION -->
+        <div class="newsletter mt-50">
+            <div>
+                <h2 style="margin-bottom:10px;">Subscribe to our Newsletter</h2>
+                <p style="font-size:14px; opacity:0.8;">Get the latest updates on medicines and health tips.</p>
+            </div>
+            <div class="newsletter-input">
+               
+                <button>Send Message</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-cols">
+                <div>
+                    <a href="index.html" class="logo" style="color:white; margin-bottom:20px;">
+                        <i class="fas fa-heart-pulse" style="color:var(--primary-green);"></i> SHARIF PHARMACY
+                    </a>
+                    <p style="font-size:13px; color:#ccc; line-height:1.6; margin-top:10px;">
+                        Sharif Pharmacy is your trusted online pharmacy in Kotla, providing authentic medicines, baby care products, and health devices.
+                    </p>
+                </div>
+                <div>
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="career.html">Careers</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="partners.html">Partners</a></li>
+                        <li><a href="service.html">Services</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="help.html">Help Center</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="bottom-bar">
+                <span>&copy; 2025 Sharif Pharmacy Pakistan | Designed by Abdullah Nasir</span>
+            </div>
+        </div>
+    </footer>
+
+
+
+<!-- Floating WhatsApp Button -->
+<a href="https://wa.me/923329588433?text=Assalam%20o%20Alaikum%20Sharif%20Pharmacy%2C%20I%20need%20some%20help." 
+   class="whatsapp-float" 
+   target="_blank">
+    <i class="fab fa-whatsapp"></i>
+    <span class="float-label">Chat with us</span>
+</a>
+
+
+
+
+
+    <!-- Toast Notification -->
+    <div id="toast">Item added to cart</div>
+
+    <!-- CART -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeCartModal()">&times;</span>
+            <h2 style="margin-bottom:20px; color:var(--dark-green);">Your Cart</h2>
+            
+            <div id="cart-items-container">
+                <p style="color:#777; text-align:center;">Your cart is empty.</p>
+            </div>
+
+            <div class="cart-total-row">
+                <span>Total:</span>
+                <span id="modal-total-price">Rs. 0.00</span>
+            </div>
+
+            <button class="whatsapp-btn" onclick="checkoutWhatsApp()">
+                <i class="fab fa-whatsapp"></i> Proceed to Order
+            </button>
+        </div>
+    </div>
+
+    <button id="backToTop" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+
+    <script src="script.js"></script>
+
+
+
+
+
+
+<script>
+    // 1. Show the image preview when a file is selected
+function previewImage(event) {
+    const reader = new FileReader();
+    reader.onload = function() {
+        const output = document.getElementById('presc-img-preview');
+        output.src = reader.result;
+        document.getElementById('presc-preview-container').style.display = 'block';
+        
+        // Scroll to preview automatically
+        document.getElementById('presc-preview-container').scrollIntoView({ behavior: 'smooth' });
+    }
+    reader.readAsDataURL(event.target.files[0]);
+}
+
+// 2. Clear the selection
+function removeImage() {
+    document.getElementById('presc-file').value = "";
+    document.getElementById('presc-preview-container').style.display = 'none';
+}
+
+// 3. Open WhatsApp with instructions
+function sendPrescriptionToWA() {
+    const phoneNumber = "923329588433";
+    const message = "*NEW PRESCRIPTION ORDER*%0A%0A" + 
+                    "Assalam o Alaikum Sharif Pharmacy, I have my prescription ready. " + 
+                    "I am attaching the photo now. Please tell me the total price.";
+    
+    const waUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+    
+    // Alert user because we can't auto-attach
+    alert("Opening WhatsApp... Please tap the 'Paperclip' or 'Plus' icon in the chat to attach your prescription photo.");
+    
+    window.open(waUrl, '_blank');
+}
+</script>
+
+
+
+
+
+</body>
+</html>

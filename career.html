@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers - Sharif Pharmacy</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-career.css">
+    <style>
+       
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 2000; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0,0,0,0.6); 
+    backdrop-filter: blur(4px); 
+}
+
+/* Modal Content Box */
+.modal-content {
+    background-color: #fff;
+    margin: 5% auto; 
+    padding: 30px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 500px; /* Limits width on desktop */
+    position: relative;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Close Button (X) */
+.close-btn {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close-btn:hover {
+    color: #d63031;
+}
+
+/* Form Styling */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #333;
+    font-size: 14px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary-green);
+    box-shadow: 0 0 0 3px rgba(39, 174, 96, 0.1);
+}
+
+/* Submit Button */
+.btn-submit {
+    border: none;
+    color: white;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btn-submit:hover {
+    filter: brightness(0.9);
+}
+
+.btn-submit:active {
+    transform: scale(0.98);
+}
+
+/* --- MEDIA QUERIES (Mobile Responsiveness) --- */
+
+/* For Tablets and smaller */
+@media (max-width: 768px) {
+    .modal-content {
+        margin: 15% auto;
+        width: 90%;
+        padding: 20px;
+    }
+
+    .section-title {
+        font-size: 24px;
+    }
+}
+
+/* For Small Mobile Phones */
+@media (max-width: 480px) {
+    .modal-content {
+        margin: 20% auto;
+        padding: 20px 15px;
+    }
+
+    #modal-job-title {
+        font-size: 18px;
+    }
+
+    .form-group label {
+        font-size: 13px;
+    }
+
+    .form-group input {
+        padding: 10px;
+    }
+    
+}
+
+
+
+
+
+/* --- FLOATING WHATSAPP BUTTON --- */
+.whatsapp-float {
+    position: fixed;
+    bottom: 25px; /* Bottom position */
+    right: 25px;
+    background-color: #25d366;
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 2px 5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    background-color: #128c7e;
+}
+
+/* Pulse Effect */
+.whatsapp-float::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #25d366;
+    opacity: 0.7;
+    z-index: -1;
+    animation: wa-pulse 2s infinite;
+}
+
+@keyframes wa-pulse {
+    0% { transform: scale(1); opacity: 0.7; }
+    100% { transform: scale(1.6); opacity: 0; }
+}
+
+/* Label that shows on hover (Desktop only) */
+.float-label {
+    position: absolute;
+    right: 70px;
+    background: #333;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    visibility: hidden;
+    opacity: 0;
+    white-space: nowrap;
+    transition: 0.3s;
+}
+
+.whatsapp-float:hover .float-label {
+    visibility: visible;
+    opacity: 1;
+    right: 80px;
+}
+
+/* --- ADJUST BACK TO TOP BUTTON POSITION --- */
+/* We move it higher so it doesn't cover the WhatsApp button */
+#backToTop {
+    bottom: 95px !important; /* Moved up from 30px to 95px */
+    right: 25px !important;
+    width: 50px !important;
+    height: 50px !important;
+    background-color: var(--dark-green) !important; /* Different color to distinguish */
+}
+
+/* --- MOBILE RESPONSIVENESS --- */
+@media (max-width: 480px) {
+    .whatsapp-float {
+        width: 55px;
+        height: 55px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 25px;
+    }
+    #backToTop {
+        bottom: 85px !important;
+        right: 22px !important;
+        width: 45px !important;
+        height: 45px !important;
+    }
+    .float-label { display: none; } /* Hide labels on mobile */
+}
+    </style>
+</head>
+<body>
+
+    <!-- TOP BAR -->
+    <div class="top-bar">
+        <div class="container flex justify-between">
+            <div class="flex" style="gap:20px;">
+                <span><i class="fas fa-map-marker-alt"></i> Kotla Arab Ali Khan, Pakistan</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="container flex justify-between">
+            <a href="index.html" class="logo">
+                <i class="fas fa-heart-pulse"></i> SHARIF PHARMACY
+            </a>
+
+            <div class="search-container">
+                <input type="text" id="global-search" placeholder="Search medicines..." onkeydown="handleGlobalSearch(event)">
+                <i class="fas fa-search" onclick="triggerSearch()"></i>
+            </div>
+
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="products.html">All Products</a>
+                <a href="career.html" style="color:var(--primary-green);">Careers</a>
+            </div>
+            
+            <div class="cart-display" onclick="openCartModal()">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="total-price">Rs. 0.00</span>
+                <div class="cart-count-badge" id="cart-count">0</div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- CAREER HERO -->
+    <header class="career-hero">
+        <div class="container">
+            <h1>Join Our Team</h1>
+            <p>Work at the heart of healthcare in Kotla. We're looking for passionate individuals.</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- WHY JOIN US SECTION -->
+        <div class="mt-80 text-center">
+            <h2 class="section-title">Why work with Sharif Pharmacy?</h2>
+            <div class="grid-3 mt-50">
+                <div class="benefit-box">
+                    <i class="fas fa-stethoscope"></i>
+                    <h4>Professional Growth</h4>
+                    <p>Work alongside experienced pharmacists and medical experts.</p>
+                </div>
+                <div class="benefit-box">
+                    <i class="fas fa-heart"></i>
+                    <h4>Health Benefits</h4>
+                    <p>Comprehensive health coverage for you and your immediate family.</p>
+                </div>
+                <div class="benefit-box">
+                    <i class="fas fa-smile-beam"></i>
+                    <h4>Work-Life Balance</h4>
+                    <p>Flexible shift timings and a supportive local community environment.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- OPEN POSITIONS -->
+        <div class="mt-80">
+            <h2 class="section-title">Open Positions</h2>
+            <div class="jobs-container mt-50">
+                
+                <!-- Job 1 -->
+                <div class="job-card">
+                    <div class="job-main">
+                        <div>
+                            <span class="job-tag">Full-Time</span>
+                            <h3 class="job-title">Retail Pharmacist (Category A)</h3>
+                            <p class="job-loc"><i class="fas fa-map-marker-alt"></i> Kotla Arab Ali Khan</p>
+                        </div>
+                        <button class="btn-apply" onclick="openApplyModal('Pharmacist')">Apply Now</button>
+                    </div>
+                </div>
+
+                <!-- Job 2 -->
+                <div class="job-card">
+                    <div class="job-main">
+                        <div>
+                            <span class="job-tag">Full-Time</span>
+                            <h3 class="job-title">Delivery Rider</h3>
+                            <p class="job-loc"><i class="fas fa-map-marker-alt"></i> Kotla & Surroundings</p>
+                        </div>
+                        <button class="btn-apply" onclick="openApplyModal('Delivery Rider')">Apply Now</button>
+                    </div>
+                </div>
+
+                <!-- Job 3 -->
+                <div class="job-card">
+                    <div class="job-main">
+                        <div>
+                            <span class="job-tag">Part-Time</span>
+                            <h3 class="job-title">Inventory Manager</h3>
+                            <p class="job-loc"><i class="fas fa-map-marker-alt"></i> Main Branch</p>
+                        </div>
+                        <button class="btn-apply" onclick="openApplyModal('Inventory Manager')">Apply Now</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- APPLY MODAL -->
+    <div id="apply-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeApplyModal()">&times;</span>
+            <h2 id="modal-job-title" style="color:var(--dark-green); margin-bottom:10px;">Apply for Position</h2>
+            <p style="font-size:14px; color:#666; margin-bottom:20px;">Please fill out the form below to submit your application via WhatsApp.</p>
+            
+            <form id="careerForm">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="applicant-name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <label>WhatsApp Number</label>
+                    <input type="tel" id="applicant-phone" placeholder="03xx xxxxxxx" required>
+                </div>
+                <div class="form-group">
+                    <label>Experience (Years)</label>
+                    <input type="number" id="applicant-exp" placeholder="e.g. 2">
+                </div>
+                
+                <button type="submit" class="btn-submit" style="width:100%; margin-top:10px; background:var(--primary-green);">Submit Application</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+     <footer>
+        <div class="container">
+            <div class="footer-cols">
+                <div>
+                    <a href="index.html" class="logo" style="color:white; margin-bottom:20px;">
+                        <i class="fas fa-heart-pulse" style="color:var(--primary-green);"></i> SHARIF PHARMACY
+                    </a>
+                    <p style="font-size:13px; color:#ccc; line-height:1.6; margin-top:10px;">
+                        Sharif Pharmacy is your trusted online pharmacy in Kotla, providing authentic medicines, baby care products, and health devices.
+                    </p>
+                </div>
+                <div>
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="career.html">Careers</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="partners.html">Partners</a></li>
+                        <li><a href="service.html">Services</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="help.html">Help Center</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="bottom-bar">
+                <span>&copy; 2025 Sharif Pharmacy Pakistan | Designed by Abdullah Nasir</span>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <!-- Floating WhatsApp Button -->
+<a href="https://wa.me/923329588433?text=Assalam%20o%20Alaikum%20Sharif%20Pharmacy%2C%20I%20need%20some%20help." 
+   class="whatsapp-float" 
+   target="_blank">
+    <i class="fab fa-whatsapp"></i>
+    <span class="float-label">Chat with us</span>
+</a>
+
+
+
+<button id="backToTop" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+
+
+    <!-- Cart Components -->
+    <div id="toast">Item added to cart</div>
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeCartModal()">&times;</span>
+            <h2 style="margin-bottom:20px; color:var(--dark-green);">Your Cart</h2>
+            <div id="cart-items-container"></div>
+            <div class="cart-total-row"><span>Total:</span><span id="modal-total-price">Rs. 0.00</span></div>
+            <button class="whatsapp-btn" onclick="checkoutWhatsApp()"><i class="fab fa-whatsapp"></i> Proceed to Order</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        function openApplyModal(jobName) {
+            document.getElementById('modal-job-title').innerText = "Apply for " + jobName;
+            document.getElementById('apply-modal').style.display = "block";
+        }
+        function closeApplyModal() {
+            document.getElementById('apply-modal').style.display = "none";
+        }
+
+        // WhatsApp Submission Logic
+        document.getElementById('careerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Replace with your actual WhatsApp number (include country code, no +)
+            const myNumber = "+923329588433"; 
+
+            const jobTitle = document.getElementById('modal-job-title').innerText;
+            const name = document.getElementById('applicant-name').value;
+            const phone = document.getElementById('applicant-phone').value;
+            const experience = document.getElementById('applicant-exp').value;
+
+            const message = `*Job Application - Sharif Pharmacy*%0A%0A` +
+                            `*Position:* ${jobTitle}%0A` +
+                            `*Name:* ${name}%0A` +
+                            `*WhatsApp:* ${phone}%0A` +
+                            `*Experience:* ${experience} Years%0A%0A` +
+                            `I am interested in joining your team. Please let me know the next steps.`;
+
+            const whatsappUrl = `https://wa.me/${myNumber}?text=${message}`;
+            
+            window.open(whatsappUrl, '_blank');
+            closeApplyModal();
+        });
+    </script>
+</body>
+</html>

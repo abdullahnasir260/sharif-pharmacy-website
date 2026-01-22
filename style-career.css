@@ -1,0 +1,145 @@
+html {
+    scroll-behavior: smooth;
+}
+/* Career Page Specific Styles */
+
+.career-hero {
+    background-color: #aede68;
+    padding: 80px 0;
+    text-align: center;
+    border-radius: 40px 40px 40px 40px;
+}
+
+.career-hero h1 {
+    font-size: 50px;
+    font-weight: 900;
+    color: var(--dark-green);
+    margin-bottom: 10px;
+}
+
+.career-hero p {
+    font-size: 16px;
+    color: var(--dark-green);
+    opacity: 0.8;
+}
+
+/* Benefit Boxes */
+.benefit-box {
+    padding: 30px;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+.benefit-box:hover {
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    transform: translateY(-5px);
+}
+
+.benefit-box i {
+    font-size: 40px;
+    color: var(--primary-green);
+    margin-bottom: 20px;
+}
+
+.benefit-box h4 {
+    color: var(--dark-green);
+    margin-bottom: 10px;
+}
+
+.benefit-box p {
+    font-size: 14px;
+    color: #777;
+    line-height: 1.5;
+}
+
+/* Job Cards */
+.jobs-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.job-card {
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 15px;
+    padding: 25px;
+    transition: 0.3s;
+}
+
+.job-card:hover {
+    border-color: var(--primary-green);
+    box-shadow: 0 5px 15px rgba(139, 197, 63, 0.1);
+}
+
+.job-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.job-tag {
+    background: #eef7e3;
+    color: var(--primary-green);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.job-title {
+    font-size: 20px;
+    color: var(--dark-green);
+    margin: 10px 0 5px 0;
+}
+
+.job-loc {
+    font-size: 14px;
+    color: #999;
+}
+
+.btn-apply {
+    background: var(--dark-green);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-apply:hover {
+    background: var(--primary-green);
+}
+
+/* Form in Modal */
+.form-group {
+    margin-bottom: 15px;
+}
+.form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: var(--dark-green);
+}
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+}
+
+@media (max-width: 768px) {
+    .job-main {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+    .career-hero h1 { font-size: 35px; }
+}

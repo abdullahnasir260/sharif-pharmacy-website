@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - Sharif Pharmacy</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-terms.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="container flex justify-between">
+            <a href="index.html" class="logo">
+                <i class="fas fa-heart-pulse"></i> SHARIF PHARMACY
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="products.html">Products</a>
+                <a href="terms.html" style="color:var(--primary-green);">Terms</a>
+            </div>
+            <div class="cart-display" onclick="openCartModal()">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="total-price">Rs. 0.00</span>
+                <div class="cart-count-badge" id="cart-count">0</div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- TERMS HERO -->
+    <header class="terms-hero">
+        <div class="container">
+            <h1>Terms of Service</h1>
+            <p>Please read these terms carefully before using our website or placing an order.</p>
+        </div>
+    </header>
+
+    <div class="container mt-80 mb-80">
+        <div class="terms-content">
+            
+            <!-- 1. Pickup Only -->
+            <section class="terms-section">
+                <div class="terms-icon"><i class="fas fa-store"></i></div>
+                <div class="terms-text">
+                    <h2>1. In-Store Pickup Only</h2>
+                    <p>Sharif Pharmacy <strong>does not provide home delivery services</strong>. Any orders or inquiries made through this website or via WhatsApp are for reservation purposes only. Customers must visit our physical branch in Kotla Arab Ali Khan to pay for and collect their medicines.</p>
+                </div>
+            </section>
+
+            <!-- 2. Prescription Policy -->
+            <section class="terms-section">
+                <div class="terms-icon"><i class="fas fa-file-medical"></i></div>
+                <div class="terms-text">
+                    <h2>2. Prescription Requirements</h2>
+                    <p>In compliance with Punjab Healthcare Commission regulations, "Schedule G" and other controlled medicines will not be issued without a valid prescription from a registered medical practitioner (PMDC). We reserve the right to refuse any order if a valid prescription is not provided at the counter.</p>
+                </div>
+            </section>
+
+            <!-- 3. Medical Disclaimer -->
+            <section class="terms-section">
+                <div class="terms-icon"><i class="fas fa-user-md"></i></div>
+                <div class="terms-text">
+                    <h2>3. Medical Disclaimer</h2>
+                    <p>The information provided on this website is for general educational purposes only and does not constitute medical advice. Always consult with a doctor before starting any new medication. Sharif Pharmacy is not responsible for any self-medication consequences.</p>
+                </div>
+            </section>
+
+            <!-- 4. Pricing & Availability -->
+            <section class="terms-section">
+                <div class="terms-icon"><i class="fas fa-tags"></i></div>
+                <div class="terms-text">
+                    <h2>4. Pricing & Availability</h2>
+                    <p>Medicine prices are subject to change as per Drug Regulatory Authority of Pakistan (DRAP) notifications. We strive to keep our catalog updated, but availability may vary. We will confirm the stock and current price via WhatsApp once you place your reservation.</p>
+                </div>
+            </section>
+
+            <!-- 5. Return & Refund -->
+            <section class="terms-section">
+                <div class="terms-icon"><i class="fas fa-box-open"></i></div>
+                <div class="terms-text">
+                    <h2>5. Return & Exchange</h2>
+                    <p>For safety and hygiene, medicines cannot be returned or exchanged once they leave the pharmacy premises. Refrigerated items (like Insulin) and life-saving drugs are strictly non-returnable under any circumstances.</p>
+                </div>
+            </section>
+
+        </div>
+
+        <div class="terms-footer-note text-center mt-50">
+            <p>By using our website, you agree to these terms. If you have questions, please contact us.</p>
+            <a href="contact.html" class="btn-contact-terms">Contact Support</a>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-cols">
+                <div>
+                    <a href="index.html" class="logo" style="color:white; margin-bottom:20px;">
+                        <i class="fas fa-heart-pulse" style="color:var(--primary-green);"></i> SHARIF PHARMACY
+                    </a>
+                    <p style="font-size:13px; color:#ccc; line-height:1.6; margin-top:10px;">
+                        Sharif Pharmacy is your trusted online pharmacy in Kotla, providing authentic medicines, baby care products, and health devices.
+                    </p>
+                </div>
+                <div>
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="career.html">Careers</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="partners.html">Partners</a></li>
+                        <li><a href="service.html">Services</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="help.html">Help Center</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="bottom-bar">
+                <span>&copy; 2025 Sharif Pharmacy Pakistan | Designed by Abdullah Nasir</span>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <!-- Floating WhatsApp Button -->
+<a href="https://wa.me/923329588433?text=Assalam%20o%20Alaikum%20Sharif%20Pharmacy%2C%20I%20need%20some%20help." 
+   class="whatsapp-float" 
+   target="_blank">
+    <i class="fab fa-whatsapp"></i>
+    <span class="float-label">Chat with us</span>
+</a>
+
+
+
+<button id="backToTop" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+
+
+
+
+    <!-- CART MODAL -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeCartModal()">&times;</span>
+            <h2 style="color:var(--dark-green);">Your Cart</h2>
+            <div id="cart-items-container"></div>
+            <div class="cart-total-row"><span>Total:</span><span id="modal-total-price">Rs. 0.00</span></div>
+            <button class="whatsapp-btn" onclick="checkoutWhatsApp()">Confirm Reservation</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Partners - Sharif Pharmacy</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-partners.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="container flex justify-between">
+            <a href="index.html" class="logo">
+                <i class="fas fa-heart-pulse"></i> SHARIF PHARMACY
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="products.html">All Products</a>
+                <a href="partners.html" style="color:var(--primary-green);">Partners</a>
+            </div>
+            <div class="cart-display" onclick="openCartModal()">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="total-price">Rs. 0.00</span>
+                <div class="cart-count-badge" id="cart-count">0</div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- PARTNERS HERO -->
+    <header class="partners-hero">
+        <div class="container">
+            <h1>Our Trusted Partners</h1>
+            <p>We collaborate with world-class pharmaceutical brands and local healthcare experts to bring you the best medical care in Kotla.</p>
+        </div>
+    </header>
+
+    <div class="container mt-80">
+        <!-- BRAND PARTNERS -->
+        <div class="text-center">
+            <h2 class="section-title">Pharmaceutical Partners</h2>
+            <p style="color:#666; margin-bottom: 40px;">We source 100% authentic medicines directly from these trusted manufacturers.</p>
+            
+            <div class="partners-grid">
+                <div class="partner-card">GSK</div>
+                <div class="partner-card">Pfizer</div>
+                <div class="partner-card">Abbott</div>
+                <div class="partner-card">Getz Pharma</div>
+                <div class="partner-card">Sami</div>
+                <div class="partner-card">Searle</div>
+                <div class="partner-card">Bayer</div>
+                <div class="partner-card">Sanofi</div>
+            </div>
+        </div>
+
+        <!-- COLLABORATION TYPES -->
+        <div class="mt-80 grid-3">
+            <div class="collab-box">
+                <i class="fas fa-user-md"></i>
+                <h3>For Doctors</h3>
+                <p>We partner with local clinics in Kotla to ensure patients get the exact medicine prescribed without delay.</p>
+            </div>
+            <div class="collab-box">
+                <i class="fas fa-hospital"></i>
+                <h3>For Hospitals</h3>
+                <p>Special bulk pricing and priority delivery for local healthcare centers and private hospitals.</p>
+            </div>
+            <div class="collab-box">
+                <i class="fas fa-truck-loading"></i>
+                <h3>For Suppliers</h3>
+                <p>We are always looking for authorized distributors of surgical instruments and healthcare devices.</p>
+            </div>
+        </div>
+
+        <!-- BECOME A PARTNER CTA -->
+        <div class="partner-cta mt-80 mb-80">
+            <h2>Interested in Partnering with Us?</h2>
+            <p>If you are a doctor, a supplier, or a health brand, let’s grow together.</p>
+            <a href="https://wa.me/923329588433?text=I%20am%20interested%20in%20a%20business%20partnership%20with%20Sharif%20Pharmacy" class="btn-partner">
+                Get in Touch via WhatsApp <i class="fab fa-whatsapp"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-cols">
+                <div>
+                    <a href="index.html" class="logo" style="color:white; margin-bottom:20px;">
+                        <i class="fas fa-heart-pulse" style="color:var(--primary-green);"></i> SHARIF PHARMACY
+                    </a>
+                    <p style="font-size:13px; color:#ccc; line-height:1.6; margin-top:10px;">
+                        Sharif Pharmacy is your trusted online pharmacy in Kotla, providing authentic medicines, baby care products, and health devices.
+                    </p>
+                </div>
+                <div>
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="career.html">Careers</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="partners.html">Partners</a></li>
+                        <li><a href="service.html">Services</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="help.html">Help Center</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="bottom-bar">
+                <span>&copy; 2025 Sharif Pharmacy Pakistan | Designed by Abdullah Nasir</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast">Item added to cart</div>
+
+    <!-- CART -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeCartModal()">&times;</span>
+            <h2 style="margin-bottom:20px; color:var(--dark-green);">Your Cart</h2>
+            
+            <div id="cart-items-container">
+                <p style="color:#777; text-align:center;">Your cart is empty.</p>
+            </div>
+
+            <div class="cart-total-row">
+                <span>Total:</span>
+                <span id="modal-total-price">Rs. 0.00</span>
+            </div>
+
+            <button class="whatsapp-btn" onclick="checkoutWhatsApp()">
+                <i class="fab fa-whatsapp"></i> Proceed to Order
+            </button>
+        </div>
+    </div>
+
+    <!-- Floating WhatsApp Button -->
+<a href="https://wa.me/923329588433?text=Assalam%20o%20Alaikum%20Sharif%20Pharmacy%2C%20I%20need%20some%20help." 
+   class="whatsapp-float" 
+   target="_blank">
+    <i class="fab fa-whatsapp"></i>
+    <span class="float-label">Chat with us</span>
+</a>
+<!-- STICKY BUTTONS -->
+    <span class="float-label">Chat with us</span>
+</a>
+    <button id="backToTop"><i class="fas fa-arrow-up"></i></button>
+
+
+    <script src="script.js"></script>
+</body>
+</html>

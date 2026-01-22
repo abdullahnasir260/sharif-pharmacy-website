@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Blog - Sharif Pharmacy</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-blog.css">
+</head>
+<body>
+
+    <!-- NAVBAR (Same as your index) -->
+    <nav>
+        <div class="container flex justify-between">
+            <a href="index.html" class="logo">
+                <i class="fas fa-heart-pulse"></i> SHARIF PHARMACY
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="products.html">All Products</a>
+                <a href="blog.html" style="color:var(--primary-green);">Blog</a>
+            </div>
+            <div class="cart-display" onclick="openCartModal()">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="total-price">Rs. 0.00</span>
+                <div class="cart-count-badge" id="cart-count">0</div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SIMPLE HERO -->
+    <header class="blog-simple-hero">
+        <div class="container">
+            <h1>Health & Wellness</h1>
+            <p>Tips and guides from your trusted pharmacists at Sharif Pharmacy.</p>
+        </div>
+    </header>
+
+    <!-- BLOG GRID -->
+    <section class="container mt-80 mb-80">
+        <div class="blog-grid">
+            
+            <!-- Article 1 -->
+            <div class="simple-blog-card">
+                <div class="blog-img-wrap">
+                    <img src="https://images.pexels.com/photos/3985163/pexels-photo-3985163.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Winter Care">
+                    <span class="blog-tag-sm">Health Tips</span>
+                </div>
+                <div class="blog-details">
+                    <small>December 15, 2023</small>
+                    <h3>5 Ways to Protect Your Skin This Winter</h3>
+                    <p>Winter in Kotla can be dry. Learn how to keep your skin hydrated using simple pharmacy products...</p>
+                    <a href="winter-skin.html" class="btn-read">Read Article <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Article 2 -->
+            <div class="simple-blog-card">
+                <div class="blog-img-wrap">
+                    <img src="https://images.pexels.com/photos/3683074/pexels-photo-3683074.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Vitamins">
+                    <span class="blog-tag-sm">Supplements</span>
+                </div>
+                <div class="blog-details">
+                    <small>December 10, 2023</small>
+                    <h3>Are You Taking Your Vitamins Correctly?</h3>
+                    <p>Taking vitamins at the wrong time can reduce their effect. Our experts explain the best schedule...</p>
+                    <a href="vitamin-timing.html" class="btn-read">Read Article <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Article 3 -->
+            <div class="simple-blog-card">
+                <div class="blog-img-wrap">
+                    <img src="https://images.pexels.com/photos/11100062/pexels-photo-11100062.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Baby Care">
+                    <span class="blog-tag-sm">Baby Care</span>
+                </div>
+                <div class="blog-details">
+                    <small>December 05, 2023</small>
+                    <h3>Essential First Aid Kit for New Parents</h3>
+                    <p>Every home with a baby needs these 10 basic medical items. Check if you have them all in your cabinet...</p>
+                    <a href="first-aid-kit.html" class="btn-read">Read Article <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-cols">
+                <div>
+                    <a href="index.html" class="logo" style="color:white; margin-bottom:20px;">
+                        <i class="fas fa-heart-pulse" style="color:var(--primary-green);"></i> SHARIF PHARMACY
+                    </a>
+                    <p style="font-size:13px; color:#ccc; line-height:1.6; margin-top:10px;">
+                        Sharif Pharmacy is your trusted online pharmacy in Kotla, providing authentic medicines, baby care products, and health devices.
+                    </p>
+                </div>
+                <div>
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="career.html">Careers</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="partners.html">Partners</a></li>
+                        <li><a href="service.html">Services</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="help.html">Help Center</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="bottom-bar">
+                <span>&copy; 2025 Sharif Pharmacy Pakistan | Designed by Abdullah Nasir</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast">Item added to cart</div>
+
+    <!-- CART -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeCartModal()">&times;</span>
+            <h2 style="margin-bottom:20px; color:var(--dark-green);">Your Cart</h2>
+            
+            <div id="cart-items-container">
+                <p style="color:#777; text-align:center;">Your cart is empty.</p>
+            </div>
+
+            <div class="cart-total-row">
+                <span>Total:</span>
+                <span id="modal-total-price">Rs. 0.00</span>
+            </div>
+
+            <button class="whatsapp-btn" onclick="checkoutWhatsApp()">
+                <i class="fab fa-whatsapp"></i> Proceed to Order
+            </button>
+        </div>
+    </div>
+    
+    <!-- Floating WhatsApp Button -->
+<a href="https://wa.me/923329588433?text=Assalam%20o%20Alaikum%20Sharif%20Pharmacy%2C%20I%20need%20some%20help." 
+   class="whatsapp-float" 
+   target="_blank">
+    <i class="fab fa-whatsapp"></i>
+    <!-- STICKY BUTTONS -->
+    <span class="float-label">Chat with us</span>
+</a>
+    <button id="backToTop"><i class="fas fa-arrow-up"></i></button>
+
+    <script src="script.js"></script>
+</body>
+</html>

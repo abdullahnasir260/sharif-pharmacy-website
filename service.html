@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - Sharif Pharmacy</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-service.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="container flex justify-between">
+            <a href="index.html" class="logo">
+                <i class="fas fa-heart-pulse"></i> SHARIF PHARMACY
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="products.html">All Products</a>
+                <a href="services.html" style="color:var(--primary-green);">Services</a>
+            </div>
+            <div class="cart-display" onclick="openCartModal()">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="total-price">Rs. 0.00</span>
+                <div class="cart-count-badge" id="cart-count">0</div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SERVICES HERO -->
+    <header class="services-hero">
+        <div class="container">
+            <h1>Healthcare Services</h1>
+            <p>More than just a pharmacy. We provide essential healthcare support to the people of Kotla Arab Ali Khan.</p>
+        </div>
+    </header>
+
+    <div class="container mt-80 mb-80">
+        <div class="services-grid">
+            
+            <!-- Service 1 -->
+            <div class="service-card">
+                <i class="fas fa-truck"></i>
+                <h3>Free Home Delivery</h3>
+                <p>We provide fast and free home delivery within Kotla city for all medicine orders above Rs. 500.</p>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="service-card">
+                <i class="fas fa-stethoscope"></i>
+                <h3>Blood Pressure Check</h3>
+                <p>Visit our pharmacy anytime for a professional and accurate blood pressure monitoring service for free.</p>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="service-card">
+                <i class="fas fa-tint"></i>
+                <h3>Sugar (Glucose) Test</h3>
+                <p>Quick and hygienic blood sugar testing available at our counter with instant results.</p>
+            </div>
+
+            <!-- Service 4 -->
+            <div class="service-card">
+                <i class="fas fa-lungs"></i>
+                <h3>Nebulization</h3>
+                <p>We offer nebulizer services for patients with asthma or respiratory issues in a clean environment.</p>
+            </div>
+
+            <!-- Service 5 -->
+            <div class="service-card">
+                <i class="fas fa-weight"></i>
+                <h3>Weight Monitoring</h3>
+                <p>Keep track of your health goals with our professional weighing and BMI consultation.</p>
+            </div>
+
+            <!-- Service 6 -->
+            <div class="service-card">
+                <i class="fas fa-pills"></i>
+                <h3>Medicine Guidance</h3>
+                <p>Our Category-A Pharmacist is always available to explain your dosage and side effects.</p>
+            </div>
+
+        </div>
+
+        <!-- SPECIAL REQUEST -->
+        <div class="services-cta">
+            <h2>Need a Specific Medicine?</h2>
+            <p>If a rare medicine is not available in Kotla, we can specially source it for you from Lahore or Islamabad within 24 hours.</p>
+            <a href="https://wa.me/923329588433" class="btn-wa-service">Request Medicine via WhatsApp</a>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+     <footer>
+        <div class="container">
+            <div class="footer-cols">
+                <div>
+                    <a href="index.html" class="logo" style="color:white; margin-bottom:20px;">
+                        <i class="fas fa-heart-pulse" style="color:var(--primary-green);"></i> SHARIF PHARMACY
+                    </a>
+                    <p style="font-size:13px; color:#ccc; line-height:1.6; margin-top:10px;">
+                        Sharif Pharmacy is your trusted online pharmacy in Kotla, providing authentic medicines, baby care products, and health devices.
+                    </p>
+                </div>
+                <div>
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="career.html">Careers</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="partners.html">Partners</a></li>
+                        <li><a href="service.html">Services</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="help.html">Help Center</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="bottom-bar">
+                <span>&copy; 2025 Sharif Pharmacy Pakistan | Designed by Abdullah Nasir</span>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+    <!-- Floating WhatsApp Button -->
+<a href="https://wa.me/923329588433?text=Assalam%20o%20Alaikum%20Sharif%20Pharmacy%2C%20I%20need%20some%20help." 
+   class="whatsapp-float" 
+   target="_blank">
+    <i class="fab fa-whatsapp"></i>
+    <span class="float-label">Chat with us</span>
+</a>
+
+
+
+<button id="backToTop" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+
+    <!-- Toast Notification -->
+    <div id="toast">Item added to cart</div>
+
+    <!-- CART -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeCartModal()">&times;</span>
+            <h2 style="margin-bottom:20px; color:var(--dark-green);">Your Cart</h2>
+            
+            <div id="cart-items-container">
+                <p style="color:#777; text-align:center;">Your cart is empty.</p>
+            </div>
+
+            <div class="cart-total-row">
+                <span>Total:</span>
+                <span id="modal-total-price">Rs. 0.00</span>
+            </div>
+
+            <button class="whatsapp-btn" onclick="checkoutWhatsApp()">
+                <i class="fab fa-whatsapp"></i> Proceed to Order
+            </button>
+        </div>
+    </div>
+
+    <!-- Floating WhatsApp Button -->
+<a href="https://wa.me/923329588433?text=Assalam%20o%20Alaikum%20Sharif%20Pharmacy%2C%20I%20need%20some%20help." 
+   class="whatsapp-float" 
+   target="_blank">
+    <i class="fab fa-whatsapp"></i>
+    <span class="float-label">Chat with us</span>
+</a>
+<!-- STICKY BUTTONS -->
+    <span class="float-label">Chat with us</span>
+</a>
+    <button id="backToTop"><i class="fas fa-arrow-up"></i></button>
+
+
+    <script src="script.js"></script>
+</body>
+</html>

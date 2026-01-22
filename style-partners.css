@@ -1,0 +1,125 @@
+/* --- PARTNERS PAGE STYLES --- */
+
+.partners-hero {
+    background-color: #aede68;
+    padding: 100px 0;
+    text-align: center;
+    border-radius: 0 0 50px 50px;
+}
+
+.partners-hero h1 {
+    font-size: 50px;
+    font-weight: 900;
+    color: var(--dark-green);
+    margin-bottom: 15px;
+}
+
+.partners-hero p {
+    font-size: 18px;
+    color: var(--dark-green);
+    max-width: 700px;
+    margin: 0 auto;
+    opacity: 0.8;
+}
+
+/* --- LOGO GRID --- */
+.partners-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.partner-card {
+    background: #fff;
+    padding: 40px 20px;
+    border: 1px solid #eee;
+    border-radius: 20px;
+    font-size: 24px;
+    font-weight: 800;
+    color: #ccc; /* Looks like a professional gray logo */
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: default;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.partner-card:hover {
+    border-color: var(--primary-green);
+    color: var(--primary-green);
+    transform: translateY(-5px);
+}
+
+/* --- COLLAB BOXES --- */
+.collab-box {
+    text-align: center;
+    padding: 40px;
+    background: #f9f9f9;
+    border-radius: 25px;
+    transition: 0.3s;
+}
+
+.collab-box:hover {
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.collab-box i {
+    font-size: 40px;
+    color: var(--primary-green);
+    margin-bottom: 20px;
+}
+
+.collab-box h3 {
+    color: var(--dark-green);
+    margin-bottom: 15px;
+}
+
+.collab-box p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* --- CTA SECTION --- */
+.partner-cta {
+    background: var(--dark-green);
+    padding: 60px;
+    border-radius: 30px;
+    text-align: center;
+    color: white;
+}
+
+.partner-cta h2 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.partner-cta p {
+    margin-bottom: 30px;
+    opacity: 0.8;
+}
+
+.btn-partner {
+    background: var(--primary-green);
+    color: white;
+    padding: 15px 35px;
+    border-radius: 50px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.3s;
+}
+
+.btn-partner:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+/* --- MOBILE --- */
+@media (max-width: 768px) {
+    .partners-hero h1 { font-size: 35px; }
+    .partner-cta { padding: 40px 20px; }
+    .partner-cta h2 { font-size: 24px; }
+}

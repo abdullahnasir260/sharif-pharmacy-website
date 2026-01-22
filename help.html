@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Center - Sharif Pharmacy</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-help.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="container flex justify-between">
+            <a href="index.html" class="logo">
+                <i class="fas fa-heart-pulse"></i> SHARIF PHARMACY
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="products.html">Products</a>
+                <a href="help.html" style="color:var(--primary-green);">Help</a>
+            </div>
+            <div class="cart-display" onclick="openCartModal()">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="total-price">Rs. 0.00</span>
+                <div class="cart-count-badge" id="cart-count">0</div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HELP HERO -->
+    <header class="help-hero">
+        <div class="container">
+            <h1>How can we help you?</h1>
+            <p>Search for topics or browse our frequently asked questions below.</p>
+            
+        </div>
+    </header>
+
+    <div class="container mt-80">
+        <!-- TOPIC CARDS -->
+        <div class="help-topics-grid">
+            <div class="topic-card">
+                <i class="fas fa-truck"></i>
+                <h3>Delivery</h3>
+                <p>Only in Kotla Arab Ali Khan</p>
+            </div>
+            <div class="topic-card">
+                <i class="fas fa-file-prescription"></i>
+                <h3>Prescriptions</h3>
+                <p>How to upload and verify.</p>
+            </div>
+            
+            <div class="topic-card">
+                <i class="fas fa-undo"></i>
+                <h3>Returns</h3>
+                <p>Medicine return policies.</p>
+            </div>
+        </div>
+
+        <!-- FAQ ACCORDION -->
+        <div class="faq-container mt-80 mb-80">
+            <h2 class="section-title text-center">Frequently Asked Questions</h2>
+            
+            <div class="accordion-list mt-50">
+                <!-- Q1 -->
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        What are your delivery timings in Kotla?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>We deliver from 8:00 AM to 10:00 PM. Most orders within Kotla Arab Ali Khan are delivered within 60 to 90 minutes.</p>
+                    </div>
+                </div>
+
+                <!-- Q2 -->
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        How do I send my prescription?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>You can use the "Order via Prescription" button on our homepage to upload a photo, or send it directly to our WhatsApp at +92 332 958 8433.</p>
+                    </div>
+                </div>
+
+                <!-- Q3 -->
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        Are your medicines authentic?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Yes, 100%. We source all our medicines directly from authorized distributors and multinational pharmaceutical companies like GSK, Abbott, and Pfizer.</p>
+                    </div>
+                </div>
+
+                <!-- Q4 -->
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        Can I return a medicine?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>For safety reasons, refrigerated medicines (like Insulin) cannot be returned. Other items can be returned within 24 hours if the seal is unbroken and you have the original receipt.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CONTACT CTA -->
+        <div class="help-cta mb-80">
+            <h2>Still need help?</h2>
+            <p>Our pharmacists are available 24/7 on WhatsApp for any medical queries.</p>
+            <a href="https://wa.me/923329588433" class="btn-wa-help">Chat with Pharmacist</a>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-cols">
+                <div>
+                    <a href="index.html" class="logo" style="color:white; margin-bottom:20px;">
+                        <i class="fas fa-heart-pulse" style="color:var(--primary-green);"></i> SHARIF PHARMACY
+                    </a>
+                    <p style="font-size:13px; color:#ccc; line-height:1.6; margin-top:10px;">
+                        Sharif Pharmacy is your trusted online pharmacy in Kotla, providing authentic medicines, baby care products, and health devices.
+                    </p>
+                </div>
+                <div>
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="career.html">Careers</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="partners.html">Partners</a></li>
+                        <li><a href="service.html">Services</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="help.html">Help Center</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="bottom-bar">
+                <span>&copy; 2025 Sharif Pharmacy Pakistan | Designed by Abdullah Nasir</span>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+    <!-- Floating WhatsApp Button -->
+<a href="https://wa.me/923329588433?text=Assalam%20o%20Alaikum%20Sharif%20Pharmacy%2C%20I%20need%20some%20help." 
+   class="whatsapp-float" 
+   target="_blank">
+    <i class="fab fa-whatsapp"></i>
+    <span class="float-label">Chat with us</span>
+</a>
+
+
+
+<button id="backToTop" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+
+
+
+
+
+    <!-- CART MODAL (Needs to be here for navbar cart to work) -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeCartModal()">&times;</span>
+            <h2 style="margin-bottom:20px; color:var(--dark-green);">Your Cart</h2>
+            <div id="cart-items-container"></div>
+            <div class="cart-total-row"><span>Total:</span><span id="modal-total-price">Rs. 0.00</span></div>
+            <button class="whatsapp-btn" onclick="checkoutWhatsApp()">Order Now</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+    <script>
+        function toggleAccordion(element) {
+    const content = element.nextElementSibling;
+    content.classList.toggle('open');
+    const icon = element.querySelector('i');
+    icon.classList.toggle('fa-chevron-up');
+    icon.classList.toggle('fa-chevron-down');
+}
+    </script>
+</body>
+</html>
