@@ -3,62 +3,256 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vitamin Timing Guide - Sharif Pharmacy</title>
+    <title>Understanding Vitamin D3 - Sharif Pharmacy</title>
+    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <link rel="stylesheet" href="style.css">
     <style>
-        .article-wrap { max-width: 800px; margin: 50px auto; padding: 0 20px; line-height: 1.8; }
-        .back-btn { color: var(--primary-green); font-weight: 700; text-decoration: none; display: inline-block; margin-bottom: 20px; }
-        .article-title { font-size: 42px; color: var(--dark-green); font-weight: 900; margin-bottom: 20px; line-height: 1.2; }
-        .article-meta { color: #888; font-size: 14px; margin-bottom: 30px; display: block; }
-        .main-img { width: 100%; border-radius: 30px; margin-bottom: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .content h2 { color: var(--dark-green); margin-top: 40px; margin-bottom: 15px; font-size: 28px; }
-        .content p { font-size: 18px; color: #444; margin-bottom: 20px; }
-        .content ul li { font-size: 18px; margin-bottom: 15px; color: #444; }
-        .tip-box { background: #e3f2fd; border-left: 5px solid #2196f3; padding: 25px; border-radius: 15px; margin: 30px 0; }
+        /* Article Page Specific Styles */
+        .article-hero {
+            background-color: #aede68; /* Subtle sun-yellow for Vitamin D */
+            padding: 80px 0;
+            text-align: center;
+            border-radius: 0 0 50px 50px;
+        }
+        .article-hero h1 { font-size: 42px; color: var(--dark-green); font-weight: 900; }
+        
+        .content-wrap { max-width: 900px; margin: 60px auto; padding: 0 20px; }
+        
+        .main-article-img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            border-radius: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .benefit-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid #eee;
+            transition: 0.3s;
+        }
+        .benefit-card:hover { border-color: var(--primary-green); transform: translateY(-5px); }
+
+        .benefit-card i { font-size: 30px; color: var(--primary-green); margin-bottom: 15px; display: block; }
+        .benefit-card h3 { margin-bottom: 10px; color: var(--dark-green); }
+        .benefit-card p { font-size: 14px; line-height: 1.6; color: #555; }
+
+        .cta-box {
+            background: var(--dark-green);
+            color: white;
+            padding: 40px;
+            border-radius: 30px;
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        .btn-wa-consult {
+            background: #25D366;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            margin-top: 20px;
+            text-decoration: none;
+        }
+
+        .source-tag {
+            display: inline-block;
+            background: #eef7e3;
+            color: var(--primary-green);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .article-hero h1 { font-size: 32px; }
+            .main-article-img { height: 250px; }
+        }
     </style>
 </head>
 <body>
-    <main class="article-wrap">
-        <a href="blog.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Blog</a>
-        <span class="article-meta">Health Tips | Dec 10, 2023</span>
-        <h1 class="article-title">The Science of Supplements: Are You Taking Them Correctly?</h1>
-        
-        <img src="https://images.pexels.com/photos/3683074/pexels-photo-3683074.jpeg" class="main-img">
 
-        <div class="content">
-            <p>Buying vitamins is an investment in your health. However, many people take them at the wrong time, meaning their body only absorbs a small fraction of the nutrients.</p>
+    <!-- TOP BAR -->
+    <div class="top-bar">
+        <div class="container flex justify-between">
+            <div class="flex" style="gap:20px;">
+                <span><i class="fas fa-map-marker-alt"></i> Kotla Arab Ali Khan, Pakistan</span>
+            </div>
+        </div>
+    </div>
 
-            <h2>Morning vs. Evening</h2>
-            <ul>
-                <li><strong>Morning:</strong> Vitamin C and B-Complex. These provide energy and can interfere with sleep if taken at night.</li>
-                <li><strong>Evening:</strong> Magnesium. It helps relax your muscles and can improve your sleep quality.</li>
-            </ul>
+    <!-- NAVBAR (Complete with Search) -->
+    <nav>
+        <div class="container flex justify-between">
+            <a href="index.html" class="logo">
+                <i class="fas fa-heart-pulse"></i> SHARIF PHARMACY
+            </a>
 
-            <div class="tip-box">
-                <strong>Pharmacist's Warning:</strong> Vitamin D3 and Vitamin E are fat-soluble. They MUST be taken with a meal that contains some fat (like breakfast or dinner). Taking them on an empty stomach is almost useless.
+            <div class="search-container">
+                <input type="text" id="global-search" placeholder="Search medicines..." onkeyup="handleGlobalSearch(event)" autocomplete="off">
+                <i class="fas fa-search" onclick="triggerSearch()"></i>
+                <div id="search-suggestions" class="suggestions-box"></div>
             </div>
 
-            <h2>Avoid the Tea Trap</h2>
-            <p>In Pakistan, we love our tea. But drinking tea or coffee within 1 hour of taking your vitamins (especially Iron or Multivitamins) can block absorption. Use plain water instead.</p>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="products.html">All Products</a>
+                <a href="blog.html" style="color:var(--primary-green);">Blog</a>
+            </div>
+            
+            <div class="cart-display" onclick="openCartModal()">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="total-price">Rs. 0.00</span>
+                <div class="cart-count-badge" id="cart-count">0</div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ARTICLE HERO -->
+    <header class="article-hero">
+        <div class="container">
+           
+            <h1 class="mt-20">The Power of Vitamin D3</h1>
+            <p style="color:var(--dark-green); opacity:0.8; margin-top:10px;">Why the "Sunshine Vitamin" is vital for the people of Kotla</p>
+        </div>
+    </header>
+
+    <main class="content-wrap">
+        <img src="https://images.pexels.com/photos/3683074/pexels-photo-3683074.jpeg" class="main-article-img" alt="Vitamin D3 Capsules">
+
+        <div class="article-body">
+            <p style="font-size:18px; line-height:1.8; color:#444; margin-bottom:30px;">
+                Despite being a sunny country, over 70% of Pakistanis suffer from Vitamin D deficiency. Vitamin D3 (Cholecalciferol) is not just a vitamin; it acts as a hormone that controls many vital functions in your body.
+            </p>
+
+            <div class="info-grid">
+                <div class="benefit-card">
+                    <i class="fas fa-bone"></i>
+                    <h3>Bone & Teeth Health</h3>
+                    <p>Without Vitamin D3, your body cannot absorb calcium. It is essential for preventing bone pain and osteoporosis in later life.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <i class="fas fa-shield-virus"></i>
+                    <h3>Immunity Booster</h3>
+                    <p>D3 strengthens your immune system, helping your body fight off infections, flu, and respiratory illnesses common in winter.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <i class="fas fa-smile"></i>
+                    <h3>Mood & Energy</h3>
+                    <p>Low levels are often linked to seasonal depression and chronic fatigue. Boosting your D3 can improve mental clarity and energy.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <i class="fas fa-heartbeat"></i>
+                    <h3>Heart Protection</h3>
+                    <p>Emerging research suggests that adequate Vitamin D levels support healthy blood pressure and cardiovascular health.</p>
+                </div>
+            </div>
+
+            <h2 style="color:var(--dark-green); margin:40px 0 20px;">Common Symptoms of Deficiency</h2>
+            <ul style="line-height:2; color:#555; padding-left:20px;">
+                <li>Constant tiredness or fatigue even after sleeping.</li>
+                <li>Bone and lower back pain.</li>
+                <li>Slow wound healing.</li>
+                <li>Hair loss and frequent muscle aches.</li>
+            </ul>
+
+            <div class="cta-box">
+                <span class="source-tag">SHARIF PHARMACY CARE</span>
+                <h2>Need a Vitamin D3 Supplement?</h2>
+                <p>From <strong>Sunny D</strong> to <strong>Surbex Z</strong>, we stock high-quality, authentic supplements. Message us for the correct dosage advice.</p>
+                <a href="https://wa.me/923329588433?text=Assalam%20o%20Alaikum%20Sharif%20Pharmacy%2C%20I%20want%20to%20know%20about%20Vitamin%20D3%20supplements." class="btn-wa-consult">
+                    <i class="fab fa-whatsapp"></i> Ask our Pharmacist
+                </a>
+            </div>
         </div>
     </main>
 
+    <!-- FOOTER (Full 4-Column) -->
+    <footer>
+        <div class="container">
+            <div class="footer-cols">
+                <div>
+                    <a href="index.html" class="logo" style="color:white; margin-bottom:20px;">
+                        <i class="fas fa-heart-pulse" style="color:var(--primary-green);"></i> SHARIF PHARMACY
+                    </a>
+                    <p style="font-size:13px; color:#ccc; line-height:1.6; margin-top:10px;">
+                        Sharif Pharmacy is your trusted online pharmacy in Kotla, providing authentic medicines, baby care products, and health devices.
+                    </p>
+                </div>
+                <div>
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="career.html">Careers</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="partners.html">Partners</a></li>
+                        <li><a href="service.html">Services</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="help.html">Help Center</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="bottom-bar">
+                <span>&copy; 2025 Sharif Pharmacy Pakistan | Designed by Abdullah Nasir</span>
+            </div>
+        </div>
+    </footer>
 
+    <!-- CART MODAL -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeCartModal()">&times;</span>
+            <h2 style="margin-bottom:20px; color:var(--dark-green);">Your Cart</h2>
+            <div id="cart-items-container"></div>
+            <div class="cart-total-row"><span>Total:</span><span id="modal-total-price">Rs. 0.00</span></div>
+            <button class="whatsapp-btn" onclick="checkoutWhatsApp()"><i class="fab fa-whatsapp"></i> Proceed to Order</button>
+        </div>
+    </div>
 
-    <!-- Floating WhatsApp Button -->
-<a href="https://wa.me/923329588433?text=Assalam%20o%20Alaikum%20Sharif%20Pharmacy%2C%20I%20need%20some%20help." 
-   class="whatsapp-float" 
-   target="_blank">
-    <i class="fab fa-whatsapp"></i>
-    <span class="float-label">Chat with us</span>
-</a>
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/923329588433" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        <span class="float-label">Chat with us</span>
+    </a>
 
+    <!-- Back to Top -->
+    <button id="backToTop" title="Go to top"><i class="fas fa-arrow-up"></i></button>
 
-
-<button id="backToTop" title="Go to top"><i class="fas fa-arrow-up"></i></button>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
