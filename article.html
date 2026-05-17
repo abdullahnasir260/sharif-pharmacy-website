@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health News & Wellness Hub - Sharif Pharmacy</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Wellness Hub Specific Styles */
+        :root { --news-red: #d63031; }
+        
+        .hub-hero {
+            background: linear-gradient(rgba(31, 60, 15, 0.8), rgba(31, 60, 15, 0.8)), url('https://images.pexels.com/photos/3985163/pexels-photo-3985163.jpeg');
+            background-size: cover; background-position: center;
+            padding: 100px 0; text-align: center; color: white; border-radius: 0 0 50px 50px;
+        }
+        .hub-hero h1 { font-size: 50px; font-weight: 900; margin-bottom: 15px; }
+
+        /* Breaking News Ticker */
+        .news-ticker {
+            background: #fff; border: 1px solid #eee; margin: -30px auto 40px;
+            max-width: 1000px; border-radius: 50px; display: flex; align-items: center;
+            overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        .ticker-label { background: var(--news-red); color: white; padding: 10px 20px; font-weight: 800; font-size: 12px; text-transform: uppercase; }
+        .ticker-content { padding: 0 20px; font-size: 14px; font-weight: 500; color: #555; flex: 1; }
+
+        /* News Layout */
+        .hub-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; }
+        
+        .article-card-lg {
+            background: white; border-radius: 25px; overflow: hidden; border: 1px solid #eee;
+            margin-bottom: 30px; transition: 0.3s;
+        }
+        .article-card-lg:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+        .article-img-lg { width: 100%; height: 350px; object-fit: cover; }
+        .article-content-lg { padding: 30px; }
+
+        /* Categories Section */
+        .hub-section-title { font-size: 24px; font-weight: 800; color: var(--dark-green); margin-bottom: 25px; display: flex; align-items: center; gap: 10px; }
+        .hub-section-title::after { content: ''; flex: 1; height: 2px; background: #eee; }
+
+        .news-sidebar { position: sticky; top: 100px; }
+        .sidebar-box { background: #f9f9f9; padding: 25px; border-radius: 20px; margin-bottom: 30px; }
+        .sidebar-item { display: flex; gap: 15px; margin-bottom: 20px; align-items: center; text-decoration: none; }
+        .sidebar-item img { width: 70px; height: 70px; border-radius: 12px; object-fit: cover; }
+        .sidebar-item h4 { font-size: 14px; color: var(--dark-green); line-height: 1.3; }
+
+        .tag { padding: 5px 12px; border-radius: 4px; font-size: 10px; font-weight: 800; text-transform: uppercase; margin-bottom: 10px; display: inline-block; }
+        .tag-med { background: #eef7e3; color: var(--primary-green); }
+        .tag-news { background: #ffe3e3; color: var(--news-red); }
+
+        @media (max-width: 992px) {
+            .hub-grid { grid-template-columns: 1fr; }
+            .hub-hero h1 { font-size: 35px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOP BAR -->
+    <div class="top-bar">
+        <div class="container flex justify-between">
+            <div class="flex" style="gap:20px;">
+                <span><i class="fas fa-map-marker-alt"></i> Kotla Arab Ali Khan, Pakistan</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="container flex justify-between">
+            <a href="index.html" class="logo">
+                <i class="fas fa-heart-pulse"></i> SHARIF PHARMACY
+            </a>
+
+            <div class="search-container">
+                <input type="text" id="global-search" placeholder="Search articles or medicine..." onkeyup="handleGlobalSearch(event)" autocomplete="off">
+                <i class="fas fa-search" onclick="triggerSearch()"></i>
+                <div id="search-suggestions" class="suggestions-box"></div>
+            </div>
+
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="products.html">Products</a>
+                <a href="blog.html" style="color:var(--primary-green);">Wellness Hub</a>
+            </div>
+            
+            <div class="cart-display" onclick="openCartModal()">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="total-price">Rs. 0.00</span>
+                <div class="cart-count-badge" id="cart-count">0</div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HUB HERO -->
+    <header class="hub-hero">
+        <div class="container">
+            <h1>Health & Wellness Hub</h1>
+            <p>Your daily dose of medical news, expert advice, and pharmacy updates.</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- BREAKING TICKER -->
+        <div class="news-ticker">
+            <div class="ticker-label">Pharmacy News</div>
+            <div class="ticker-content">
+                <marquee behavior="scroll" direction="left">
+                    ⚠️ New updates on medicine price deregulation in Pakistan — check our pricing guide. 💊 Free BP testing available all week at Kotla Branch. 💉 Polio vaccination drive starts next Monday.
+                </marquee>
+            </div>
+        </div>
+
+        <div class="hub-grid mt-50">
+            <!-- MAIN CONTENT -->
+            <div class="main-news">
+                
+                <h2 class="hub-section-title">Latest Articles</h2>
+
+                <!-- Big News Item 1 (Winter Skin) -->
+                <article class="article-card-lg">
+                    <img src="https://images.pexels.com/photos/3985163/pexels-photo-3985163.jpeg" class="article-img-lg" alt="Skin Care">
+                    <div class="article-content-lg">
+                        <span class="tag tag-med">Dermatology</span>
+                        <h3>5 Ways to Protect Your Skin This Winter</h3>
+                        <p style="color:#666; margin:15px 0;">Dry winds in Punjab can damage your skin barrier. Learn why lukewarm water and specific ceramides are your best friends this season...</p>
+                        <a href="winter-skin.html" style="color:var(--primary-green); font-weight:800;">Read Full Article →</a>
+                    </div>
+                </article>
+
+                <!-- Big News Item 2 (Vitamin D) -->
+                <article class="article-card-lg">
+                    <img src="https://images.pexels.com/photos/3683074/pexels-photo-3683074.jpeg" class="article-img-lg" alt="Vitamins">
+                    <div class="article-content-lg">
+                        <span class="tag tag-med">Supplements</span>
+                        <h3>Understanding the Importance of Vitamin D3</h3>
+                        <p style="color:#666; margin:15px 0;">Over 70% of Pakistanis are D3 deficient. Discover how this "Sunshine Hormone" affects your immunity and heart health...</p>
+                        <a href="vitamin-timing.html" style="color:var(--primary-green); font-weight:800;">Read Full Article →</a>
+                    </div>
+                </article>
+
+                <h2 class="hub-section-title">Health News Pakistan</h2>
+
+                <!-- News Article 3 -->
+                <article class="article-card-lg">
+                    <img src="https://images.pexels.com/photos/4386466/pexels-photo-4386466.jpeg" class="article-img-lg" alt="Heart Health">
+                    <div class="article-content-lg">
+                        <span class="tag tag-news">Cardiology</span>
+                        <h3>Cardiology Experts Share Heart Health Secrets</h3>
+                        <p style="color:#666; margin:15px 0;">Leading doctors discuss the "30-minute rule" and why monitoring your numbers at home can save lives in our community...</p>
+                        <a href="heart-health.html" style="color:var(--primary-green); font-weight:800;">Read Full Article →</a>
+                    </div>
+                </article>
+            </div>
+
+            <!-- SIDEBAR -->
+            <aside class="news-sidebar">
+                <div class="sidebar-box">
+                    <h3 style="margin-bottom:20px; font-size:18px;">Trending Topics</h3>
+                    <a href="heart-health.html" class="sidebar-item">
+                        <img src="https://images.pexels.com/photos/4386466/pexels-photo-4386466.jpeg">
+                        <div>
+                            <h4>Is your BP monitor accurate?</h4>
+                            <small style="color:#999;">5 Min Read</small>
+                        </div>
+                    </a>
+                    <a href="winter-skin.html" class="sidebar-item">
+                        <img src="https://images.pexels.com/photos/3985163/pexels-photo-3985163.jpeg">
+                        <div>
+                            <h4>Top 5 Moisturizers for 2025</h4>
+                            <small style="color:#999;">3 Min Read</small>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="sidebar-box" style="background:var(--dark-green); color:white;">
+                    <h3>Ask a Pharmacist</h3>
+                    <p style="font-size:13px; margin:10px 0 20px; opacity:0.8;">Got a medical question? Our team is available 24/7 on WhatsApp.</p>
+                    <a href="https://wa.me/923329588433" class="btn-wa-heart" style="background:#25D366; color:white; padding:10px 20px; border-radius:50px; display:block; text-align:center; font-weight:700;">Chat Now</a>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-cols">
+                <div>
+                    <a href="index.html" class="logo" style="color:white; margin-bottom:20px;">
+                        <i class="fas fa-heart-pulse" style="color:var(--primary-green);"></i> SHARIF PHARMACY
+                    </a>
+                    <p style="font-size:13px; color:#ccc; line-height:1.6; margin-top:10px;">
+                        Sharif Pharmacy is your trusted online pharmacy in Kotla, providing authentic medicines, baby care products, and health devices.
+                    </p>
+                </div>
+                <div>
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="career.html">Careers</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="blog.html">Wellness Hub</a></li>
+                        <li><a href="partners.html">Partners</a></li>
+                        <li><a href="service.html">Services</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="help.html">Help Center</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="bottom-bar">
+                <span>&copy; 2025 Sharif Pharmacy Pakistan | Designed by Abdullah Nasir</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- CART MODAL -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeCartModal()">&times;</span>
+            <h2 style="margin-bottom:20px; color:var(--dark-green);">Your Cart</h2>
+            <div id="cart-items-container"></div>
+            <div class="cart-total-row"><span>Total:</span><span id="modal-total-price">Rs. 0.00</span></div>
+            <button class="whatsapp-btn" onclick="checkoutWhatsApp()"><i class="fab fa-whatsapp"></i> Proceed to Order</button>
+        </div>
+    </div>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/923329588433" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        <span class="float-label">Consult Now</span>
+    </a>
+
+    <button id="backToTop" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+
+    <script src="script.js"></script>
+</body>
+</html>
