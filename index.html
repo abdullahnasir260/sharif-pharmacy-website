@@ -14,6 +14,7 @@
     <link rel="icon" type="image/x-icon" href="#">
    
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-product.css">
 
 
 <style>
@@ -111,11 +112,7 @@
     to { transform: translateY(0); opacity: 1; }
 }
 
-@media (max-width: 600px) {
-    .preview-body { flex-direction: column; text-align: center; }
-    #presc-img-preview { width: 100%; height: 200px; }
-    .prescription-box { flex-direction: column; text-align: center; }
-}
+
 
 
 </style>
@@ -294,46 +291,25 @@
         </div>
 
         <div class="grid-4">
-            <!-- Product 1 -->
-            <div class="product-card">
-                <span class="badge">20% Off</span>
-                <div class="prod-img-container"><img src="https://placehold.co/150x150?text=Bottle" class="prod-img"></div>
-                <div class="prod-title">Dietary Supplement</div>
-                <div class="rating"><i class="fas fa-star"></i> 4.5</div>
-                <div class="prod-footer">
-                    <button class="btn-add" onclick="addToCart(1500, 'Dietary Supplement')">+ Add</button>
-                    <div><span style="font-size:12px; text-decoration:line-through; color:#999;">Rs. 2000</span> <span class="price">Rs. 1500</span></div>
-                </div>
+            <div class="product-card" data-category="supplements" data-price="1500">
+                <div class="prod-img-container" onclick="openProductDetail('Dietary Supplement')"><img src="https://placehold.co/150x150?text=Bottle" class="prod-img"></div>
+                <span class="card-cat-badge">Supplement</span><div class="prod-title">Dietary Supplement</div>
+                <div class="flex justify-between mt-50"><button class="btn-add" onclick="addToCart(1500, 'Dietary Supplement')">+ Add</button><span class="price">Rs. 1500</span></div>
             </div>
-            <!-- Product 2 -->
-            <div class="product-card">
-                <div class="prod-img-container"><img src="https://placehold.co/150x150?text=Gloves" class="prod-img"></div>
-                <div class="prod-title">Nitrile Disposable Gloves</div>
-                <div class="rating"><i class="fas fa-star"></i> 4.5</div>
-                <div class="prod-footer">
-                    <button class="btn-add" onclick="addToCart(500, 'Nitrile Gloves')">+ Add</button>
-                    <span class="price">Rs. 500</span>
-                </div>
+            <div class="product-card" data-category="personal" data-price="500">
+                <div class="prod-img-container" onclick="openProductDetail('Nitrile Gloves')"><img src="https://placehold.co/150x150?text=Gloves" class="prod-img"></div>
+                <span class="card-cat-badge">Personal</span><div class="prod-title">Nitrile Disposable Gloves</div>
+                <div class="flex justify-between mt-50"><button class="btn-add" onclick="addToCart(500, 'Nitrile Gloves')">+ Add</button><span class="price">Rs. 500</span></div>
             </div>
-            <!-- Product 3 -->
-            <div class="product-card">
-                <div class="prod-img-container"><img src="https://placehold.co/150x150?text=Vitamins" class="prod-img"></div>
-                <div class="prod-title">Womens Multi Vitamins</div>
-                <div class="rating"><i class="fas fa-star"></i> 4.5</div>
-                <div class="prod-footer">
-                    <button class="btn-add" onclick="addToCart(2500, 'Multi Vitamins')">+ Add</button>
-                    <span class="price">Rs. 2500</span>
-                </div>
+            <div class="product-card" data-category="vitamins" data-price="2500">
+                <div class="prod-img-container" onclick="openProductDetail('Womens Multi Vitamins')"><img src="https://placehold.co/150x150?text=Vitamins" class="prod-img"></div>
+                <span class="card-cat-badge">Vitamins</span><div class="prod-title">Womens Multi Vitamins</div>
+                <div class="flex justify-between mt-50"><button class="btn-add" onclick="addToCart(2500, 'Multi Vitamins')">+ Add</button><span class="price">Rs. 2500</span></div>
             </div>
-            <!-- Product 4 -->
-            <div class="product-card">
-                <div class="prod-img-container"><img src="https://placehold.co/150x150?text=Soap" class="prod-img"></div>
-                <div class="prod-title">Liquid Hand Soap</div>
-                <div class="rating"><i class="fas fa-star"></i> 4.5</div>
-                <div class="prod-footer">
-                    <button class="btn-add" onclick="addToCart(450, 'Liquid Soap')">+ Add</button>
-                    <span class="price">Rs. 450</span>
-                </div>
+            <div class="product-card" data-category="personal" data-price="450">
+                <div class="prod-img-container" onclick="openProductDetail('Liquid Soap')"><img src="https://placehold.co/150x150?text=Soap" class="prod-img"></div>
+                <span class="card-cat-badge">Personal</span><div class="prod-title">Liquid Hand Soap</div>
+                <div class="flex justify-between mt-50"><button class="btn-add" onclick="addToCart(450, 'Liquid Soap')">+ Add</button><span class="price">Rs. 450</span></div>
             </div>
         </div>
 
@@ -342,7 +318,7 @@
             <div class="banner-text">
                 <h3 style="font-size: 28px; margin-bottom: 15px;">Don't have a<br>Prescription?</h3>
                 <p style="font-size:14px; margin-bottom: 15px;">Start online consultations with our certified doctors.</p>
-                <button class="btn-black"><a href="https://wa.me/+923329588433">Start Consultations</a></button>
+                <a class="btn-black" href="https://wa.me/+923329588433">Start Consultations</a>
             </div>
             <img src="https://placehold.co/200x250/transparent/png?text=Doctor" class="banner-img-right">
         </div>
@@ -351,46 +327,25 @@
         <div class="mt-50">
             <h2 class="section-title" style="margin-bottom: 20px;">Trending products</h2>
             <div class="grid-4">
-                <!-- Product 1 -->
-                <div class="product-card">
-                    <span class="badge">10% Off</span>
-                    <div class="prod-img-container"><img src="https://placehold.co/150x150?text=Collagen" class="prod-img"></div>
-                    <div class="prod-title">Gencell Collagen Peptides</div>
-                    <div class="rating"><i class="fas fa-star"></i> 4.5</div>
-                    <div class="prod-footer">
-                        <button class="btn-add" onclick="addToCart(3000, 'Collagen Peptides')">+ Add</button>
-                        <span class="price">Rs. 3000</span>
-                    </div>
+                <div class="product-card" data-category="supplements" data-price="3000">
+                    <div class="prod-img-container" onclick="openProductDetail('Gencell Collagen Peptides')"><img src="https://placehold.co/150x150?text=Collagen" class="prod-img"></div>
+                    <span class="card-cat-badge">Supplement</span><div class="prod-title">Gencell Collagen Peptides</div>
+                    <div class="flex justify-between mt-50"><button class="btn-add" onclick="addToCart(3000, 'Collagen Peptides')">+ Add</button><span class="price">Rs. 3000</span></div>
                 </div>
-                <!-- Product 2 -->
-                <div class="product-card">
-                    <div class="prod-img-container"><img src="https://placehold.co/150x150?text=D3" class="prod-img"></div>
-                    <div class="prod-title">Nature's Bounty D3</div>
-                    <div class="rating"><i class="fas fa-star"></i> 5.0</div>
-                    <div class="prod-footer">
-                        <button class="btn-add" onclick="addToCart(1800, 'Vitamin D3')">+ Add</button>
-                        <span class="price">Rs. 1800</span>
-                    </div>
+                <div class="product-card" data-category="vitamins" data-price="1800">
+                    <div class="prod-img-container" onclick="openProductDetail('Nature\'s Bounty D3')"><img src="https://placehold.co/150x150?text=D3" class="prod-img"></div>
+                    <span class="card-cat-badge">Vitamins</span><div class="prod-title">Nature's Bounty D3</div>
+                    <div class="flex justify-between mt-50"><button class="btn-add" onclick="addToCart(1800, 'Vitamin D3')">+ Add</button><span class="price">Rs. 1800</span></div>
                 </div>
-                <!-- Product 3 -->
-                <div class="product-card">
-                    <div class="prod-img-container"><img src="https://placehold.co/150x150?text=D+1000" class="prod-img"></div>
-                    <div class="prod-title">Vitamin D 1000 IU</div>
-                    <div class="rating"><i class="fas fa-star"></i> 4.2</div>
-                    <div class="prod-footer">
-                        <button class="btn-add" onclick="addToCart(1200, 'Vitamin D 1000')">+ Add</button>
-                        <span class="price">Rs. 1200</span>
-                    </div>
+                <div class="product-card" data-category="vitamins" data-price="1200">
+                    <div class="prod-img-container" onclick="openProductDetail('Vitamin D 1000 IU')"><img src="https://placehold.co/150x150?text=D+1000" class="prod-img"></div>
+                    <span class="card-cat-badge">Vitamins</span><div class="prod-title">Vitamin D 1000 IU</div>
+                    <div class="flex justify-between mt-50"><button class="btn-add" onclick="addToCart(1200, 'Vitamin D 1000')">+ Add</button><span class="price">Rs. 1200</span></div>
                 </div>
-                <!-- Product 4 -->
-                <div class="product-card">
-                    <div class="prod-img-container"><img src="https://placehold.co/150x150?text=Multi" class="prod-img"></div>
-                    <div class="prod-title">Physician's Daily Multi</div>
-                    <div class="rating"><i class="fas fa-star"></i> 4.8</div>
-                    <div class="prod-footer">
-                        <button class="btn-add" onclick="addToCart(2200, 'Daily Multivitamin')">+ Add</button>
-                        <span class="price">Rs. 2200</span>
-                    </div>
+                <div class="product-card" data-category="vitamins" data-price="2200">
+                    <div class="prod-img-container" onclick="openProductDetail('Physician\'s Daily Multi')"><img src="https://placehold.co/150x150?text=Multi" class="prod-img"></div>
+                    <span class="card-cat-badge">Vitamins</span><div class="prod-title">Physician's Daily Multi</div>
+                    <div class="flex justify-between mt-50"><button class="btn-add" onclick="addToCart(2200, 'Daily Multivitamin')">+ Add</button><span class="price">Rs. 2200</span></div>
                 </div>
             </div>
         </div>
@@ -584,6 +539,13 @@
         </div>
     </div>
 
+    <div id="product-detail-modal" class="modal">
+        <div class="modal-content product-detail-content">
+            <span class="close-btn" onclick="closeProductModal()">&times;</span>
+            <div id="detail-modal-body"></div>
+        </div>
+    </div>
+
     <button id="backToTop" title="Go to top"><i class="fas fa-arrow-up"></i></button>
 
     <script src="script.js"></script>
@@ -614,20 +576,7 @@ function removeImage() {
     document.getElementById('presc-preview-container').style.display = 'none';
 }
 
-// 3. Open WhatsApp with instructions
-function sendPrescriptionToWA() {
-    const phoneNumber = "923329588433";
-    const message = "*NEW PRESCRIPTION ORDER*%0A%0A" + 
-                    "Assalam o Alaikum Sharif Pharmacy, I have my prescription ready. " + 
-                    "I am attaching the photo now. Please tell me the total price.";
-    
-    const waUrl = `https://wa.me/${phoneNumber}?text=${message}`;
-    
-    // Alert user because we can't auto-attach
-    alert("Opening WhatsApp... Please tap the 'Paperclip' or 'Plus' icon in the chat to attach your prescription photo.");
-    
-    window.open(waUrl, '_blank');
-}
+// 3. Open WhatsApp with instructions (handled by async uploader below)
 
 
 
