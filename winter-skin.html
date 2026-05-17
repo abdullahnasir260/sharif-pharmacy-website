@@ -3,56 +3,236 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Winter Skincare Guide - Sharif Pharmacy</title>
+    <title>Winter Skin Care Guide - Sharif Pharmacy</title>
+    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <link rel="stylesheet" href="style.css">
     <style>
-        .article-wrap { max-width: 800px; margin: 50px auto; padding: 0 20px; line-height: 1.8; }
-        .back-btn { color: var(--primary-green); font-weight: 700; text-decoration: none; display: inline-block; margin-bottom: 20px; }
-        .article-title { font-size: 42px; color: var(--dark-green); font-weight: 900; margin-bottom: 20px; line-height: 1.2; }
-        .article-meta { color: #888; font-size: 14px; margin-bottom: 30px; display: block; }
-        .main-img { width: 100%; border-radius: 30px; margin-bottom: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .content h2 { color: var(--dark-green); margin-top: 40px; margin-bottom: 15px; font-size: 28px; }
-        .content p { font-size: 18px; color: #444; margin-bottom: 20px; }
-        .tip-box { background: #f0f7e6; border-left: 5px solid var(--primary-green); padding: 25px; border-radius: 15px; margin: 30px 0; font-style: italic; }
+        /* Article Page Specific Styles */
+        .article-hero {
+            background-color: #aede68;
+            padding: 80px 0;
+            text-align: center;
+            border-radius: 0 0 50px 50px;
+        }
+        .article-hero h1 { font-size: 42px; color: var(--dark-green); font-weight: 900; }
+        
+        .content-wrap { max-width: 900px; margin: 60px auto; padding: 0 20px; }
+        
+        .main-article-img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            border-radius: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .tip-card {
+            background: #f9f9f9;
+            padding: 30px;
+            border-radius: 20px;
+            border-left: 5px solid var(--primary-green);
+        }
+
+        .tip-card i { font-size: 24px; color: var(--primary-green); margin-bottom: 15px; display: block; }
+        .tip-card h3 { margin-bottom: 10px; color: var(--dark-green); }
+        .tip-card p { font-size: 14px; line-height: 1.6; color: #555; }
+
+        .recommendation-box {
+            background: var(--dark-green);
+            color: white;
+            padding: 40px;
+            border-radius: 30px;
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        .btn-consult-wa {
+            background: #25D366;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            margin-top: 20px;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .article-hero h1 { font-size: 32px; }
+            .main-article-img { height: 250px; }
+        }
     </style>
 </head>
 <body>
-    <main class="article-wrap">
-        <a href="blog.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Blog</a>
-        <span class="article-meta">Published by Dr. Abdullah Nasir | Dec 15, 2023</span>
-        <h1 class="article-title">Surviving the Punjab Winter: A Guide to Dry Skin Relief</h1>
-        
-        <img src="https://images.pexels.com/photos/3985163/pexels-photo-3985163.jpeg" class="main-img">
 
-        <div class="content">
-            <p>Winter in Kotla Arab Ali Khan can be quite harsh. The dry winds combined with low humidity levels can quickly strip the natural oils from your skin, leading to itching, cracking, and discomfort.</p>
+    <!-- TOP BAR -->
+    <div class="top-bar">
+        <div class="container flex justify-between">
+            <div class="flex" style="gap:20px;">
+                <span><i class="fas fa-map-marker-alt"></i> Kotla Arab Ali Khan, Pakistan</span>
+            </div>
+        </div>
+    </div>
 
-            <h2>Switch from Lotions to Creams</h2>
-            <p>Most thin lotions are water-based. In the cold, that water evaporates, leaving your skin dry again within minutes. We recommend using <strong>thick creams or ointments</strong>. Products containing Petroleum Jelly or Glycerin work best to lock in moisture.</p>
+    <!-- NAVBAR (Complete with Search) -->
+    <nav>
+        <div class="container flex justify-between">
+            <a href="index.html" class="logo">
+                <i class="fas fa-heart-pulse"></i> SHARIF PHARMACY
+            </a>
 
-            <div class="tip-box">
-                "Pharmacist Tip: The best time to moisturize is exactly 3 minutes after your shower. Pat your skin dry with a towel, but keep it slightly damp before applying your cream."
+            <div class="search-container">
+                <input type="text" id="global-search" placeholder="Search medicines..." onkeyup="handleGlobalSearch(event)" autocomplete="off">
+                <i class="fas fa-search" onclick="triggerSearch()"></i>
+                <div id="search-suggestions" class="suggestions-box"></div>
             </div>
 
-            <h2>Don't Forget the Sunscreen</h2>
-            <p>Just because it's cold doesn't mean the sun isn't damaging your skin. UV rays are still active in winter. If you are spending time outdoors, apply a basic SPF 30 sunscreen to prevent winter sunburn and premature aging.</p>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="products.html">All Products</a>
+                <a href="blog.html" style="color:var(--primary-green);">Blog</a>
+            </div>
+            
+            <div class="cart-display" onclick="openCartModal()">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="total-price">Rs. 0.00</span>
+                <div class="cart-count-badge" id="cart-count">0</div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ARTICLE HERO -->
+    <header class="article-hero">
+        <div class="container">
+            <a href="blog.html" style="color:var(--dark-green); font-weight:700; font-size:14px;"><i class="fas fa-arrow-left"></i> BACK TO BLOG</a>
+            <h1 class="mt-20">Healthy Skin This Winter</h1>
+            <p style="color:var(--dark-green); opacity:0.8; margin-top:10px;">Expert Winter Care Advice from Sharif Pharmacy</p>
+        </div>
+    </header>
+
+    <main class="content-wrap">
+        <img src="https://images.pexels.com/photos/3985163/pexels-photo-3985163.jpeg" class="main-article-img" alt="Winter Skin Care">
+
+        <div class="article-body">
+            <p style="font-size:18px; line-height:1.8; color:#444; margin-bottom:30px;">
+                Winter in Kotla can strip your skin of its natural moisture. Indoor heating and cold winds lead to dryness and irritation. Follow our professional guide to keep your skin supple and glowing.
+            </p>
+
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <i class="fas fa-faucet"></i>
+                    <h3>Lukewarm Water Only</h3>
+                    <p>Hot showers strip natural oils. Switch to lukewarm water to prevent your skin from becoming tight and dry.</p>
+                </div>
+
+                <div class="tip-card">
+                    <i class="fas fa-layer-group"></i>
+                    <h3>Lock in Moisture</h3>
+                    <p>Apply moisturizer immediately after washing while your skin is still damp to trap moisture into the cells.</p>
+                </div>
+
+                <div class="tip-card">
+                    <i class="fas fa-sun"></i>
+                    <h3>Don't Skip SPF</h3>
+                    <p>UV rays are still powerful in winter. Always wear sun protection to prevent hidden skin damage and aging.</p>
+                </div>
+
+                <div class="tip-card">
+                    <i class="fas fa-wind"></i>
+                    <h3>Humidify Your Room</h3>
+                    <p>Central heating dries the air. Using a humidifier at night adds essential moisture back to your environment.</p>
+                </div>
+            </div>
+
+            <div class="recommendation-box">
+                <h2>Pharmacist's Choice</h2>
+                <p>Confused about which moisturizer suits your skin type? Our Category-A Pharmacists are ready to help you choose the right product.</p>
+                <a href="https://wa.me/923329588433?text=Assalam%20o%20Alaikum%20Sharif%20Pharmacy%2C%20I%20need%20advice%20for%20winter%20skin%20care." class="btn-consult-wa">
+                    <i class="fab fa-whatsapp"></i> Consult on WhatsApp
+                </a>
+            </div>
         </div>
     </main>
 
+    <!-- FOOTER (Full 4-Column Version) -->
+    <footer>
+        <div class="container">
+            <div class="footer-cols">
+                <div>
+                    <a href="index.html" class="logo" style="color:white; margin-bottom:20px;">
+                        <i class="fas fa-heart-pulse" style="color:var(--primary-green);"></i> SHARIF PHARMACY
+                    </a>
+                    <p style="font-size:13px; color:#ccc; line-height:1.6; margin-top:10px;">
+                        Sharif Pharmacy is your trusted online pharmacy in Kotla, providing authentic medicines, baby care products, and health devices.
+                    </p>
+                </div>
+                <div>
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="career.html">Careers</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="partners.html">Partners</a></li>
+                        <li><a href="service.html">Services</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="help.html">Help Center</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="bottom-bar">
+                <span>&copy; 2025 Sharif Pharmacy Pakistan | Designed by Abdullah Nasir</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- CART MODAL -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeCartModal()">&times;</span>
+            <h2 style="margin-bottom:20px; color:var(--dark-green);">Your Cart</h2>
+            <div id="cart-items-container"></div>
+            <div class="cart-total-row"><span>Total:</span><span id="modal-total-price">Rs. 0.00</span></div>
+            <button class="whatsapp-btn" onclick="checkoutWhatsApp()"><i class="fab fa-whatsapp"></i> Proceed to Order</button>
+        </div>
+    </div>
+
     <!-- Floating WhatsApp Button -->
-<a href="https://wa.me/923329588433?text=Assalam%20o%20Alaikum%20Sharif%20Pharmacy%2C%20I%20need%20some%20help." 
-   class="whatsapp-float" 
-   target="_blank">
-    <i class="fab fa-whatsapp"></i>
-    <span class="float-label">Chat with us</span>
-</a>
+    <a href="https://wa.me/923329588433?text=Assalam%20o%20Alaikum%20Sharif%20Pharmacy%2C%20I%20need%20some%20help." 
+       class="whatsapp-float" 
+       target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        <span class="float-label">Chat with us</span>
+    </a>
 
+    <!-- Back to Top -->
+    <button id="backToTop" title="Go to top"><i class="fas fa-arrow-up"></i></button>
 
-
-<button id="backToTop" title="Go to top"><i class="fas fa-arrow-up"></i></button>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
