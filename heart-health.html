@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Health Secrets - Sharif Pharmacy</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Article Page Specific Styles */
+        .article-hero {
+            background-color: #aede68; /* Soft green for Heart Health */
+            padding: 80px 0;
+            text-align: center;
+            border-radius: 0 0 50px 50px;
+        }
+        .article-hero h1 { font-size: 42px; color: #b91c1c; font-weight: 900; }
+        
+        .content-wrap { max-width: 900px; margin: 60px auto; padding: 0 20px; }
+        
+        .main-article-img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            border-radius: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .secrets-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .secret-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid #fecaca;
+            transition: 0.3s;
+        }
+        .secret-card:hover { border-color: #ef4444; transform: translateY(-5px); }
+
+        .secret-card i { font-size: 30px; color: #ef4444; margin-bottom: 15px; display: block; }
+        .secret-card h3 { margin-bottom: 10px; color: #991b1b; }
+        .secret-card p { font-size: 14px; line-height: 1.6; color: #555; }
+
+        .checkup-box {
+            background: #aede68; /* Deep dark green */
+            color: black;
+            padding: 40px;
+            border-radius: 30px;
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        .btn-wa-heart {
+            background: #25D366;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            margin-top: 20px;
+            text-decoration: none;
+        }
+
+        .expert-tag {
+            display: inline-block;
+            background: #fee2e2;
+            color: #ef4444;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .article-hero h1 { font-size: 30px; }
+            .main-article-img { height: 250px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOP BAR -->
+    <div class="top-bar">
+        <div class="container flex justify-between">
+            <div class="flex" style="gap:20px;">
+                <span><i class="fas fa-map-marker-alt"></i> Kotla Arab Ali Khan, Pakistan</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAVBAR (Full with Search) -->
+    <nav>
+        <div class="container flex justify-between">
+            <a href="index.html" class="logo">
+                <i class="fas fa-heart-pulse"></i> SHARIF PHARMACY
+            </a>
+
+            <div class="search-container">
+                <input type="text" id="global-search" placeholder="Search heart medicines..." onkeyup="handleGlobalSearch(event)" autocomplete="off">
+                <i class="fas fa-search" onclick="triggerSearch()"></i>
+                <div id="search-suggestions" class="suggestions-box"></div>
+            </div>
+
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="products.html">All Products</a>
+                <a href="blog.html" style="color:var(--primary-green);">Blog</a>
+            </div>
+            
+            <div class="cart-display" onclick="openCartModal()">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="total-price">Rs. 0.00</span>
+                <div class="cart-count-badge" id="cart-count">0</div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ARTICLE HERO -->
+    <header class="article-hero">
+        <div class="container">
+           
+            <h1 class="mt-20">Cardiology Secrets for a Healthy Heart</h1>
+            <p style="color:#991b1b; opacity:0.8; margin-top:10px;">Protecting the hearts of Kotla Arab Ali Khan</p>
+        </div>
+    </header>
+
+    <main class="content-wrap">
+        <img src="https://images.pexels.com/photos/4386466/pexels-photo-4386466.jpeg" class="main-article-img" alt="Stethoscope and heart health">
+
+        <div class="article-body">
+            <p style="font-size:18px; line-height:1.8; color:#444; margin-bottom:30px;">
+                Heart disease remains one of the leading health concerns in our community. While genetics play a role, Cardiology experts agree that 80% of heart issues can be prevented through simple lifestyle changes and early detection.
+            </p>
+
+            <div class="secrets-grid">
+                <div class="secret-card">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <h3>Know Your Numbers</h3>
+                    <p>Regularly monitor your Blood Pressure. A consistent reading above 140/90 can silently damage your arteries over time.</p>
+                </div>
+
+                <div class="secret-card">
+                    <i class="fas fa-walking"></i>
+                    <h3>The 30-Minute Rule</h3>
+                    <p>Brisk walking for just 30 minutes a day can lower your risk of heart attack by up to 40%. Consistency is the secret.</p>
+                </div>
+
+                <div class="secret-card">
+                    <i class="fas fa-leaf"></i>
+                    <h3>Reduce Salt & Oil</h3>
+                    <p>Excessive salt raises blood pressure, while reused cooking oils increase bad cholesterol. Opt for fresh, homemade meals.</p>
+                </div>
+
+                <div class="secret-card">
+                    <i class="fas fa-bed"></i>
+                    <h3>Quality Sleep</h3>
+                    <p>Sleep deprivation triggers stress hormones that put a heavy load on your heart. Aim for 7-8 hours of restful sleep.</p>
+                </div>
+            </div>
+
+            <h2 style="color:#991b1b; margin:40px 0 20px;">Red Flags You Should Never Ignore</h2>
+            <p style="line-height:1.8; color:#555; margin-bottom:20px;">
+                Our pharmacists often consult with patients who ignore early signs. If you experience any of the following, consult a doctor immediately:
+            </p>
+            <ul style="line-height:2; color:#555; padding-left:20px; margin-bottom:40px;">
+                <li>Unusual shortness of breath during light activity.</li>
+                <li>Persistent pain or pressure in the center of the chest.</li>
+                <li>Swelling in the feet, ankles, or legs (Edema).</li>
+                <li>Dizziness or lightheadedness when standing up.</li>
+            </ul>
+
+            <div class="checkup-box">
+                <span class="expert-tag">PREVENTIVE CARE</span>
+                <h2>Monitor Your Heart at Home</h2>
+                <p>We stock world-class <strong>Omron</strong> and <strong>Beurer</strong> Blood Pressure monitors. Start tracking your heart health today.</p>
+                <a href="https://wa.me/923329588433?text=Assalam%20o%20Alaikum%20Sharif%20Pharmacy%2C%20I%20want%20to%20order%20a%20Blood%20Pressure%20Monitor." class="btn-wa-heart">
+                    <i class="fab fa-whatsapp"></i> Buy BP Monitor on WhatsApp
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER (Full 4-Column Version) -->
+    <footer>
+        <div class="container">
+            <div class="footer-cols">
+                <div>
+                    <a href="index.html" class="logo" style="color:white; margin-bottom:20px;">
+                        <i class="fas fa-heart-pulse" style="color:var(--primary-green);"></i> SHARIF PHARMACY
+                    </a>
+                    <p style="font-size:13px; color:#ccc; line-height:1.6; margin-top:10px;">
+                        Sharif Pharmacy is your trusted online pharmacy in Kotla, providing authentic medicines, baby care products, and health devices.
+                    </p>
+                </div>
+                <div>
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="career.html">Careers</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="partners.html">Partners</a></li>
+                        <li><a href="service.html">Services</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="help.html">Help Center</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="bottom-bar">
+                <span>&copy; 2025 Sharif Pharmacy Pakistan | Designed by Abdullah Nasir</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- CART MODAL -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeCartModal()">&times;</span>
+            <h2 style="margin-bottom:20px; color:var(--dark-green);">Your Cart</h2>
+            <div id="cart-items-container"></div>
+            <div class="cart-total-row"><span>Total:</span><span id="modal-total-price">Rs. 0.00</span></div>
+            <button class="whatsapp-btn" onclick="checkoutWhatsApp()"><i class="fab fa-whatsapp"></i> Proceed to Order</button>
+        </div>
+    </div>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/923329588433" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        <span class="float-label">Chat with us</span>
+    </a>
+
+    <!-- Back to Top -->
+    <button id="backToTop" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+
+    <script src="script.js"></script>
+</body>
+</html>
