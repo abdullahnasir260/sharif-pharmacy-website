@@ -244,6 +244,15 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 1px solid #000000;
+    border-radius: 18px;
+    padding: 14px;
+    background: #ffffff;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.brand-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 }
 .brand-item img {
     max-width: 100%;
@@ -464,11 +473,16 @@ footer {
     
     .newsletter-input { width: 100%; }
     .brands-row { justify-content: center; gap: 30px; }
+    .brand-item { width: 140px; height: auto; min-height: 120px; padding: 16px; }
+    .brand-item img { max-height: 70px; }
     
     .footer-cols { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 480px) {
     .grid-4, .grid-3 { grid-template-columns: 1fr; }
+    .brands-row { gap: 16px; }
+    .brand-item { width: 100%; min-height: 110px; padding: 14px; }
+    .brand-item img { max-height: 55px; }
     .footer-cols { grid-template-columns: 1fr; }
     .top-bar { display: none; }
     .logo { font-size: 20px; }
