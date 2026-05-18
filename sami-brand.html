@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sami Products - Sharif Pharmacy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-product.css">
+    <style>
+        .card-cat-badge { font-size: 10px; text-transform: uppercase; font-weight: 800; color: var(--primary-green); background: #f0f7e6; padding: 3px 8px; border-radius: 4px; display: inline-block; margin-bottom: 8px; }
+        .brand-hero { text-align: center; margin-bottom: 30px; }
+        .brand-logo { max-height: 80px; margin-bottom: 16px; }
+        .product-card { display: flex; flex-direction: column; }
+        .no-results { color: #777; }
+        @media (max-width: 768px) { #productGrid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px; } .prod-title { font-size: 12px; height: 32px; overflow: hidden; } }
+    </style>
+</head>
+<body>
+    <nav id="mainNav">
+        <div class="container flex justify-between">
+            <a href="index.html" class="logo"><i class="fas fa-heart-pulse"></i> SHARIF PHARMACY</a>
+            <div class="search-container">
+                <input type="text" id="global-search" placeholder="Search medicines..." onkeyup="handleGlobalSearch(event)" autocomplete="off">
+                <i class="fas fa-search" onclick="triggerSearch()"></i>
+                <div id="search-suggestions" class="suggestions-box"></div>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="products.html" style="color:var(--primary-green);">All Products</a>
+            </div>
+            <div class="cart-display" onclick="openCartModal()">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="total-price">Rs. 0.00</span>
+                <div class="cart-count-badge" id="cart-count">0</div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-50">
+        <div class="brand-hero">
+            <img src="images/sami.png" alt="Sami" class="brand-logo">
+            <h1 style="color: var(--dark-green); margin-bottom: 12px;">Sami Products</h1>
+            <p style="max-width:760px; margin: 0 auto; color:#555;">Discover Sami medicines and wellness essentials curated for everyday care.</p>
+        </div>
+
+        <div class="grid-3" id="productGrid">
+            <div class="product-card" data-category="medicine" data-price="850">
+                <div class="prod-img-container" onclick="openProductDetail('Surbex Z')"><img src="https://placehold.co/150x150?text=Surbex" class="prod-img"></div>
+                <span class="card-cat-badge">Medicine</span>
+                <div class="prod-title">Surbex Z Multivitamins</div>
+                <div class="flex justify-between mt-50"><button class="btn-add" onclick="addToCart(850, 'Surbex Z')">+ Add</button><span class="price">Rs. 850</span></div>
+            </div>
+            <div class="product-card" data-category="medicine" data-price="150">
+                <div class="prod-img-container" onclick="openProductDetail('Arinac Forte')"><img src="https://placehold.co/150x150?text=Arinac" class="prod-img"></div>
+                <span class="card-cat-badge">Medicine</span>
+                <div class="prod-title">Arinac Forte Tablets</div>
+                <div class="flex justify-between mt-50"><button class="btn-add" onclick="addToCart(150, 'Arinac Forte')">+ Add</button><span class="price">Rs. 150</span></div>
+            </div>
+            <div class="product-card" data-category="medicine" data-price="380">
+                <div class="prod-img-container" onclick="openProductDetail('Hydryllin')"><img src="https://placehold.co/150x150?text=Hydryllin" class="prod-img"></div>
+                <span class="card-cat-badge">Medicine</span>
+                <div class="prod-title">Hydryllin Syrup</div>
+                <div class="flex justify-between mt-50"><button class="btn-add" onclick="addToCart(380, 'Hydryllin')">+ Add</button><span class="price">Rs. 380</span></div>
+            </div>
+            <div class="product-card" data-category="medicine" data-price="140">
+                <div class="prod-img-container" onclick="openProductDetail('Ponstan')"><img src="https://placehold.co/150x150?text=Ponstan" class="prod-img"></div>
+                <span class="card-cat-badge">Medicine</span>
+                <div class="prod-title">Ponstan Forte Tablet</div>
+                <div class="flex justify-between mt-50"><button class="btn-add" onclick="addToCart(140, 'Ponstan Forte')">+ Add</button><span class="price">Rs. 140</span></div>
+            </div>
+            <div class="product-card" data-category="medicine" data-price="95">
+                <div class="prod-img-container" onclick="openProductDetail('Calpol Syrup')"><img src="https://placehold.co/150x150?text=Calpol" class="prod-img"></div>
+                <span class="card-cat-badge">Medicine</span>
+                <div class="prod-title">Calpol Syrup Relief</div>
+                <div class="flex justify-between mt-50"><button class="btn-add" onclick="addToCart(95, 'Calpol Syrup')">+ Add</button><span class="price">Rs. 95</span></div>
+            </div>
+            <div class="product-card" data-category="medicine" data-price="1200">
+                <div class="prod-img-container" onclick="openProductDetail('Telfast 120mg')"><img src="https://placehold.co/150x150?text=Telfast" class="prod-img"></div>
+                <span class="card-cat-badge">Medicine</span>
+                <div class="prod-title">Telfast 120mg Tablet</div>
+                <div class="flex justify-between mt-50"><button class="btn-add" onclick="addToCart(1200, 'Telfast 120mg')">+ Add</button><span class="price">Rs. 1200</span></div>
+            </div>
+            <div class="product-card" data-category="personal" data-price="150">
+                <div class="prod-img-container" onclick="openProductDetail('Betnovate')"><img src="https://placehold.co/150x150?text=Betnovate" class="prod-img"></div>
+                <span class="card-cat-badge">Personal Care</span>
+                <div class="prod-title">Betnovate-N Cream</div>
+                <div class="flex justify-between mt-50"><button class="btn-add" onclick="addToCart(150, 'Betnovate-N Cream')">+ Add</button><span class="price">Rs. 150</span></div>
+            </div>
+            <div class="product-card" data-category="medicine" data-price="1200">
+                <div class="prod-img-container" onclick="openProductDetail('Cac-1000')"><img src="https://placehold.co/150x150?text=Cac-1000" class="prod-img"></div>
+                <span class="card-cat-badge">Medicine</span>
+                <div class="prod-title">Cac-1000 Gold Tablet</div>
+                <div class="flex justify-between mt-50"><button class="btn-add" onclick="addToCart(1200, 'Cac-1000 Gold')">+ Add</button><span class="price">Rs. 1200</span></div>
+            </div>
+        </div>
+
+        <div id="no-results" class="no-results" style="display:none; margin-top: 20px; text-align:center;">No products found.</div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-cols">
+                <div>
+                    <a href="index.html" class="logo" style="color:white; margin-bottom:20px;">
+                        <i class="fas fa-heart-pulse" style="color:var(--primary-green);"></i> SHARIF PHARMACY
+                    </a>
+                    <p style="font-size:13px; color:#ccc; line-height:1.6; margin-top:10px;">
+                        Sharif Pharmacy is your trusted online pharmacy in Kotla, providing authentic medicines, baby care products, and health devices.
+                    </p>
+                </div>
+                <div>
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="career.html">Careers</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="partners.html">Partners</a></li>
+                        <li><a href="service.html">Services</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="help.html">Help Center</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="bottom-bar">
+                <span>&copy; 2025 Sharif Pharmacy Pakistan | Designed by Abdullah Nasir</span>
+            </div>
+        </div>
+    </footer>
+
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeCartModal()">&times;</span>
+            <h2>Your Cart</h2>
+            <div id="cart-items-container"></div>
+            <div class="cart-total-row"><span>Total:</span><span id="modal-total-price">Rs. 0.00</span></div>
+            <button class="whatsapp-btn" onclick="checkoutWhatsApp()">Proceed to Order</button>
+        </div>
+    </div>
+
+    <div id="product-detail-modal" class="modal">
+        <div class="modal-content product-detail-content">
+            <span class="close-btn" onclick="closeProductModal()">&times;</span>
+            <div id="detail-modal-body"></div>
+        </div>
+    </div>
+
+    <a href="https://wa.me/923329588433" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <button id="backToTop" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+    <div id="toast">Item added to cart</div>
+    <script src="script-product.js"></script>
+</body>
+</html>
