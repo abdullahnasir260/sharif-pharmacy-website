@@ -394,21 +394,26 @@ footer {
 #toast {
     visibility: hidden;
     min-width: 250px;
+    max-width: calc(100% - 40px);
     background-color: #333;
     color: #fff;
     text-align: center;
-    border-radius: 4px;
-    padding: 16px;
+    border-radius: 8px;
+    padding: 14px 18px;
     position: fixed;
     z-index: 1000;
     left: 50%;
-    bottom: 30px;
+    bottom: 16px;
     transform: translateX(-50%);
     font-size: 14px;
+    line-height: 1.4;
+    word-break: break-word;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+    pointer-events: none;
 }
 #toast.show { visibility: visible; animation: fadein 0.5s, fadeout 0.5s 2.5s; }
-@keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;} }
-@keyframes fadeout { from {bottom: 30px; opacity: 1;} to {bottom: 0; opacity: 0;} }
+@keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 16px; opacity: 1;} }
+@keyframes fadeout { from {bottom: 16px; opacity: 1;} to {bottom: 0; opacity: 0;} }
 
 .modal {
     display: none; 
