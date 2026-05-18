@@ -194,7 +194,7 @@ function addToCart(price, productName) {
     else { cart.push({ name: productName, price: price, quantity: 1 }); }
     totalAmount += price;
     updateHeaderUI();
-    showToast(`Added ${productName}`);
+    showToast(`Added ${productName} to cart`);
 }
 
 function updateQuantity(index, delta) {
@@ -298,9 +298,15 @@ function loadMore() {
 // 7. UTILS & UI EFFECTS
 // ==========================================
 function showToast(message) {
-    toastElement.innerText = message;
-    toastElement.className = "show";
-    setTimeout(() => { toastElement.className = toastElement.className.replace("show", ""); }, 3000);
+    let toast = document.getElementById('toast');
+    if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'toast';
+        document.body.appendChild(toast);
+    }
+    toast.innerText = message;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 3000);
 }
 
 function closeCartModal() { modalElement.style.display = "none"; }
