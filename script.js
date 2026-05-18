@@ -157,22 +157,26 @@ function openCartModal() {
     const modalTotalPriceElement = document.getElementById('modal-total-price');
     const modalElement = document.getElementById('cart-modal');
 
+    modalItemsContainer.innerHTML = '';
     if (cart.length === 0) {
         modalItemsContainer.innerHTML = '<div class="empty-cart-msg"><i class="fas fa-shopping-basket"></i><p>Your cart is feeling light.</p></div>';
     } else {
-        modalItemsContainer.innerHTML = ''; 
         cart.forEach((item, index) => {
             const div = document.createElement('div');
             div.className = 'cart-item-row';
             div.innerHTML = `
                 <div style="flex-grow:1;">
-                    <div class="cart-item-name">${item.name}</div>
-                    <div class="cart-item-price">Rs. ${item.price}</div>
+                    <strong>${item.name}</strong><br>
+                    <span style="color:#777; font-size:12px;">Rs. ${item.price}</span>
                 </div>
                 <div class="quantity-controls">
                     <button onclick="updateQuantity(${index}, -1)">-</button>
                     <span>${item.quantity}</span>
                     <button onclick="updateQuantity(${index}, 1)">+</button>
+                </div>
+                <div class="flex">
+                    <span style="font-weight:600; margin-left:10px;">Rs. ${(item.price * item.quantity).toLocaleString()}</span>
+                    <button class="btn-remove" onclick="removeFromCart(${index})"><i class="fas fa-trash-alt"></i></button>
                 </div>
             `;
             modalItemsContainer.appendChild(div);
