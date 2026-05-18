@@ -27,6 +27,74 @@ function handleGlobalSearch(event) {
     }
 }
 
+const PRODUCT_INFO = {
+    "Panadol Advance": { usage: "1-2 tablets for fever/pain. Max 8 daily.", features: ["Original GSK", "Fast Relief"], img: "Panadol" },
+    "Risek 40mg": { usage: "1 capsule daily before breakfast.", features: ["Best for Acidity", "Getz Pharma"], img: "Risek" },
+    "Omron BP M2": { usage: "Automatic measurement on upper arm.", features: ["Japanese Tech", "5 Year Warranty"], img: "Omron" },
+    "Lactogen 1": { usage: "Mix 1 scoop in 30ml water.", features: ["Nestle Quality", "From 0-6 months"], img: "Lactogen" }
+};
+
+function openProductDetail(name) {
+    const data = PRODUCT_INFO[name] || {
+        usage: "Take as prescribed by a healthcare professional. Store in a cool, dry place.",
+        features: ["100% Genuine Product", "High Quality Standards", "Pharmacist Approved"],
+        img: "Med"
+    };
+
+    const cards = document.querySelectorAll('.product-card');
+    let priceText = "Rs. 0";
+    cards.forEach(card => {
+        const title = card.querySelector('.prod-title');
+        const price = card.querySelector('.price');
+        if (title && price && title.innerText.includes(name)) {
+            priceText = price.innerText;
+        }
+    });
+
+    const modalBody = document.getElementById('detail-modal-body');
+    modalBody.innerHTML = `
+        <div class="detail-grid">
+            <div class="detail-img-box">
+                <img src="https://placehold.co/300x300?text=${encodeURIComponent(name.split(' ')[0])}" alt="${name}">
+            </div>
+            <div class="detail-text-box">
+                <span class="detail-tag">Authentic Medicine</span>
+                <h1 class="detail-name">${name}</h1>
+                <p class="detail-price">${priceText}</p>
+                <div class="detail-info-section">
+                    <h4>Usage / Dosage</h4>
+                    <p>${data.usage}</p>
+                </div>
+                <div class="detail-info-section">
+                    <h4>Key Features</h4>
+                    <ul>${data.features.map(f => `<li><i class="fas fa-check-circle"></i> ${f}</li>`).join('')}</ul>
+                </div>
+                <div class="detail-buttons">
+                    <button class="btn-buy-now" onclick="buyNow('${name}', '${priceText}')">Buy Now</button>
+                    <button class="btn-add-cart" onclick="addToCartFromDetail('${name}', '${priceText}')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    `;
+    document.getElementById('product-detail-modal').style.display = 'block';
+}
+
+function closeProductModal() {
+    document.getElementById('product-detail-modal').style.display = 'none';
+}
+
+function addToCartFromDetail(name, priceStr) {
+    const price = parseInt(priceStr.replace(/[^0-9]/g, '')) || 0;
+    addToCart(price, name);
+}
+
+function buyNow(name, priceStr) {
+    const price = parseInt(priceStr.replace(/[^0-9]/g, '')) || 0;
+    addToCart(price, name);
+    closeProductModal();
+    openCartModal();
+}
+
 function updateHeaderUI() {
     const priceElement = document.getElementById('total-price');
     const countElement = document.getElementById('cart-count');
