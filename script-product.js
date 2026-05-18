@@ -35,7 +35,18 @@ window.onload = function() {
     updateHeaderUI();
     checkURLSearch();
     initLoadMore();
+    initProductCardClicks();
 };
+
+function initProductCardClicks() {
+    document.querySelectorAll('.product-card').forEach(card => {
+        card.addEventListener('click', function(event) {
+            if (event.target.closest('button') || event.target.closest('a')) return;
+            const titleElement = card.querySelector('.prod-title');
+            if (titleElement) openProductDetail(titleElement.innerText.trim());
+        });
+    });
+}
 
 function checkURLSearch() {
     const urlParams = new URLSearchParams(window.location.search);
