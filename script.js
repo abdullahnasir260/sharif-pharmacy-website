@@ -152,6 +152,17 @@ function updateQuantity(index, delta) {
     openCartModal();
 }
 
+function removeFromCart(index) {
+    totalAmount -= (cart[index].price * cart[index].quantity);
+    cart.splice(index, 1);
+    updateHeaderUI();
+    if (cart.length === 0) {
+        closeCartModal();
+    } else {
+        openCartModal();
+    }
+}
+
 function openCartModal() {
     const modalItemsContainer = document.getElementById('cart-items-container');
     const modalTotalPriceElement = document.getElementById('modal-total-price');
