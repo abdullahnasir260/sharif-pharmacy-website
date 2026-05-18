@@ -193,6 +193,7 @@ nav {
     background: white;
     display: flex;
     flex-direction: column;
+    cursor: pointer;
 }
 .product-card:hover { box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
 .prod-img-container {
@@ -249,6 +250,8 @@ nav {
     padding: 14px;
     background: #ffffff;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-decoration: none;
+    color: inherit;
 }
 .brand-item:hover {
     transform: translateY(-3px);
