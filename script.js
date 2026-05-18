@@ -210,10 +210,15 @@ window.onscroll = function() {
 backToTop.onclick = () => window.scrollTo({top: 0, behavior: 'smooth'});
 
 function showToast(msg) {
-    const toast = document.getElementById('toast');
+    let toast = document.getElementById('toast');
+    if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'toast';
+        document.body.appendChild(toast);
+    }
     toast.innerText = msg;
-    toast.className = "show";
-    setTimeout(() => toast.className = "", 3000);
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 3000);
 }
 
 function closeCartModal() { 
