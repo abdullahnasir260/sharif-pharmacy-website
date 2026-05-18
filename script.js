@@ -3,6 +3,7 @@ let totalAmount = parseInt(localStorage.getItem('medicareTotal')) || 0;
 
 window.onload = function() {
     updateHeaderUI();
+    initProductCardClicks();
 };
 
 // SEARCH FUNCTION - Trigger search when clicking icon or pressing Enter
@@ -25,6 +26,16 @@ function handleGlobalSearch(event) {
         event.preventDefault();
         triggerSearch();
     }
+}
+
+function initProductCardClicks() {
+    document.querySelectorAll('.product-card').forEach(card => {
+        card.addEventListener('click', function(event) {
+            if (event.target.closest('button') || event.target.closest('a')) return;
+            const titleElement = card.querySelector('.prod-title');
+            if (titleElement) openProductDetail(titleElement.innerText.trim());
+        });
+    });
 }
 
 const PRODUCT_INFO = {
