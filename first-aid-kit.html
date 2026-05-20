@@ -20,6 +20,27 @@
     </style>
 </head>
 <body>
+    <nav>
+        <div class="container flex justify-between">
+            <a href="index.html" class="logo">
+                <i class="fas fa-heart-pulse"></i> SHARIF PHARMACY
+            </a>
+            <div class="search-container">
+                <input type="text" id="global-search" placeholder="Search medicines..." onkeyup="handleGlobalSearch(event)" autocomplete="off">
+                <i class="fas fa-search" onclick="triggerSearch()"></i>
+                <div id="search-suggestions" class="suggestions-box"></div>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="products.html">All Products</a>
+            </div>
+            <div class="cart-display" onclick="openCartModal()">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="total-price">Rs. 0.00</span>
+                <div class="cart-count-badge" id="cart-count">0</div>
+            </div>
+        </div>
+    </nav>
     <main class="article-wrap">
         <a href="blog.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Blog</a>
         <h1 class="article-title">The Essential First Aid Kit for Every Home</h1>
