@@ -1,27 +1,105 @@
 let cart = JSON.parse(localStorage.getItem('medicareCart')) || [];
 let totalAmount = parseInt(localStorage.getItem('medicareTotal')) || 0;
 
+function normalizeSearchBar() {
+    const searchContainer = document.querySelector('.search-container');
+    const searchInput = document.getElementById('global-search');
+    if (!searchContainer || !searchInput) return;
+
+    let suggestionsBox = document.getElementById('search-suggestions');
+    if (!suggestionsBox) {
+        suggestionsBox = document.createElement('div');
+        suggestionsBox.id = 'search-suggestions';
+        suggestionsBox.className = 'suggestions-box';
+        searchContainer.appendChild(suggestionsBox);
+    }
+
+    searchInput.setAttribute('autocomplete', 'off');
+    searchInput.setAttribute('placeholder', 'Search medicines...');
+    searchInput.onkeyup = handleGlobalSearch;
+    searchInput.onkeydown = function(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            triggerSearch();
+        }
+    };
+
+    const searchIcon = searchContainer.querySelector('.fa-search');
+    if (searchIcon) {
+        searchIcon.onclick = triggerSearch;
+        searchIcon.style.cursor = 'pointer';
+    }
+}
+
 window.onload = function() {
+    normalizeSearchBar();
     updateHeaderUI();
     initProductCardClicks();
 };
 
 // SEARCH FUNCTION - Trigger search when clicking icon or pressing Enter
+function isHomePage() {
+    return window.location.pathname.endsWith('index.html') || window.location.pathname.endsWith('/') || window.location.pathname.endsWith('\\');
+}
+
+function performHomeSearch() {
+    const searchInput = document.getElementById('global-search');
+    if (!searchInput) return;
+
+    const input = searchInput.value.toLowerCase().trim();
+    const productCards = document.querySelectorAll('.product-card');
+    let foundAny = false;
+
+    productCards.forEach(card => {
+        const title = card.querySelector('.prod-title')?.innerText.toLowerCase() || '';
+        if (input === '' || title.includes(input)) {
+            card.style.display = 'flex';
+            foundAny = true;
+        } else {
+            card.style.display = 'none';
+        }
+    });
+
+    let noResults = document.getElementById('home-no-results');
+    if (!noResults) {
+        noResults = document.createElement('div');
+        noResults.id = 'home-no-results';
+        noResults.style.color = '#444';
+        noResults.style.padding = '18px 0';
+        noResults.style.fontSize = '16px';
+        noResults.style.fontWeight = '700';
+        noResults.style.textAlign = 'center';
+        const container = document.querySelector('.container');
+        if (container) {
+            container.insertBefore(noResults, container.firstChild.nextSibling);
+        }
+    }
+    noResults.innerText = foundAny ? '' : 'No matching products found on this page.';
+    noResults.style.display = foundAny ? 'none' : 'block';
+}
+
 function triggerSearch() {
     const searchInput = document.getElementById('global-search');
     const searchTerm = searchInput ? searchInput.value.trim() : '';
-    
-    console.log('Search triggered with term:', searchTerm); // Debug log
-    
-    if (searchTerm) {
-        window.location.href = `products.html?search=${encodeURIComponent(searchTerm)}`;
-    } else {
+
+    if (!searchTerm) {
         alert('Please enter a medicine name to search');
+        return;
     }
+
+    if (isHomePage()) {
+        performHomeSearch();
+        return;
+    }
+
+    window.location.href = `products.html?search=${encodeURIComponent(searchTerm)}`;
 }
 
 // Handle Enter key press
 function handleGlobalSearch(event) {
+    if (isHomePage()) {
+        performHomeSearch();
+    }
     if (event.key === 'Enter') {
         event.preventDefault();
         triggerSearch();
@@ -54,19 +132,28 @@ function openProductDetail(name) {
 
     const cards = document.querySelectorAll('.product-card');
     let priceText = "Rs. 0";
+    let imageUrl = '';
     cards.forEach(card => {
         const title = card.querySelector('.prod-title');
         const price = card.querySelector('.price');
-        if (title && price && title.innerText.includes(name)) {
-            priceText = price.innerText;
+        const img = card.querySelector('.prod-img');
+        const titleText = title ? title.innerText.trim() : '';
+
+        if (titleText && (titleText === name || titleText.includes(name) || name.includes(titleText))) {
+            if (price) priceText = price.innerText;
+            if (!imageUrl && img) imageUrl = img.src;
         }
     });
+
+    if (!imageUrl) {
+        imageUrl = `https://placehold.co/300x300?text=${encodeURIComponent(name.split(' ')[0])}`;
+    }
 
     const modalBody = document.getElementById('detail-modal-body');
     modalBody.innerHTML = `
         <div class="detail-grid">
             <div class="detail-img-box">
-                <img src="https://placehold.co/300x300?text=${encodeURIComponent(name.split(' ')[0])}" alt="${name}">
+                <img src="${imageUrl}" alt="${name}">
             </div>
             <div class="detail-text-box">
                 <span class="detail-tag">Authentic Medicine</span>
@@ -284,7 +371,12 @@ const medicineList = [
     "Surgical Mask", "Hand Sanitizer", "Pampers Small", "Cerelac Wheat",
     "Vicks VapoRub", "Strepsils Honey", "Move Spray", "Polyfax Skin",
     "Pyodine Solution", "ORS Orange", "Voltral Emulgel", "Risek 40mg",
-    "Sunny D Caps", "Softin Tablet", "Digital Thermometer", "Cotton Roll", "Glucometer Strips"
+    "Sunny D Caps", "Softin Tablet", "Digital Thermometer", "Cotton Roll", "Glucometer Strips",
+    "Dietary Supplement", "Nitrile Disposable Gloves", "Womens Multi Vitamins", "Liquid Hand Soap",
+    "Gencell Collagen Peptides", "Nature's Bounty D3", "Vitamin D 1000 IU", "Physician's Daily Multi",
+    "Anagrow Hair Growth Bundle", "Certeza Nebulizer", "Life-care Walker", "Toothbrush",
+    "Herbiotics Collagen Powder with Biotin, Vitamin C & Vitamin D3", "Herbiotics Magnesium Glycinate 500mg",
+    "Spectra Block SPF 60 PA+++", "Tracnesan cream (Tretinoin 0.05%)"
 ];
 
 const searchInput = document.getElementById('global-search');
