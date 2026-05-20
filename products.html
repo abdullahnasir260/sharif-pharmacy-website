@@ -41,8 +41,9 @@
         <div class="container flex justify-between">
             <a href="index.html" class="logo"><i class="fas fa-heart-pulse"></i> SHARIF PHARMACY</a>
             <div class="search-container">
-                <input type="text" id="global-search" placeholder="Search medicines..." onkeyup="handleGlobalSearch(event)">
-                <i class="fas fa-search"></i>
+                <input type="text" id="global-search" placeholder="Search medicines..." onkeyup="handleGlobalSearch(event)" autocomplete="off">
+                <i class="fas fa-search" onclick="triggerSearch()"></i>
+                <div id="search-suggestions" class="suggestions-box"></div>
             </div>
             <div class="nav-links">
                 <a href="index.html">Home</a>
@@ -140,6 +141,46 @@
                 <div class="prod-img-container" onclick="openProductDetail('Cac-1000')"><img src="https://placehold.co/150x150?text=Cac" class="prod-img"></div>
                 <span class="card-cat-badge">Medicine</span><div class="prod-title">Cac-1000 Plus Effervescent</div>
                 <div class="flex justify-between mt-50"><button class="btn-add" onclick="addToCart(380, 'Cac-1000')">+ Add</button><span class="price">Rs. 380</span></div>
+            </div>
+            <div class="product-card" data-category="personal" data-price="4600">
+                <div class="prod-img-container" onclick="openProductDetail('Anagrow Hair Growth Bundle')"><img src="images/best-deal/anagrow-bundle.png" class="prod-img"></div>
+                <span class="card-cat-badge">Hair Product</span><div class="prod-title">Anagrow Hair Growth Bundle</div>
+                <div class="flex justify-between mt-50"><button class="btn-add" onclick="addToCart(4600, 'Anagrow Hair Growth Bundle')">+ Add</button><span class="price">Rs. 4600</span></div>
+            </div>
+            <div class="product-card" data-category="devices" data-price="6000">
+                <div class="prod-img-container" onclick="openProductDetail('Certeza Nebulizer')"><img src="images/best-deal/certeza-nebulizer.jpg" class="prod-img"></div>
+                <span class="card-cat-badge">Devices</span><div class="prod-title">Certeza Nebulizer</div>
+                <div class="flex justify-between mt-50"><button class="btn-add" onclick="addToCart(6000, 'Certeza Nebulizer')">+ Add</button><span class="price">Rs. 6000</span></div>
+            </div>
+            <div class="product-card" data-category="devices" data-price="6500">
+                <div class="prod-img-container" onclick="openProductDetail('Life-care Walker')"><img src="images/best-deal/lifecare-walker.jpg" class="prod-img"></div>
+                <span class="card-cat-badge">Devices</span><div class="prod-title">Life-care Walker</div>
+                <div class="flex justify-between mt-50"><button class="btn-add" onclick="addToCart(6500, 'Life-care Walker')">+ Add</button><span class="price">Rs. 6500</span></div>
+            </div>
+            <div class="product-card" data-category="personal" data-price="700">
+                <div class="prod-img-container" onclick="openProductDetail('Toothbrush')"><img src="images/best-deal/toothbrush.png" class="prod-img"></div>
+                <span class="card-cat-badge">Personal</span><div class="prod-title">Toothbrush</div>
+                <div class="flex justify-between mt-50"><button class="btn-add" onclick="addToCart(700, 'Toothbrush')">+ Add</button><span class="price">Rs. 700</span></div>
+            </div>
+            <div class="product-card" data-category="supplements" data-price="4950">
+                <div class="prod-img-container" onclick="openProductDetail('Herbiotics Collagen Powder with Biotin, Vitamin C & Vitamin D3')"><img src="images/trending/collagen-powder.png" class="prod-img"></div>
+                <span class="card-cat-badge">Supplement</span><div class="prod-title">Herbiotics Collagen Powder with Biotin, Vitamin C & Vitamin D3</div>
+                <div class="flex justify-between mt-50"><button class="btn-add" onclick="addToCart(4950, 'Herbiotics Collagen Powder with Biotin, Vitamin C & Vitamin D3')">+ Add</button><span class="price">Rs. 4950</span></div>
+            </div>
+            <div class="product-card" data-category="vitamins" data-price="2500">
+                <div class="prod-img-container" onclick="openProductDetail('Herbiotics Magnesium Glycinate 500mg')"><img src="images/trending/magnesium.jpg" class="prod-img"></div>
+                <span class="card-cat-badge">Vitamins</span><div class="prod-title">Herbiotics Magnesium Glycinate 500mg</div>
+                <div class="flex justify-between mt-50"><button class="btn-add" onclick="addToCart(2500, 'Herbiotics Magnesium Glycinate 500mg')">+ Add</button><span class="price">Rs. 2500</span></div>
+            </div>
+            <div class="product-card" data-category="personal" data-price="998">
+                <div class="prod-img-container" onclick="openProductDetail('Spectra Block SPF 60 PA+++')"><img src="images/trending/spectra-block-spf60.jpg" class="prod-img"></div>
+                <span class="card-cat-badge">Skin Care</span><div class="prod-title">Spectra Block SPF 60 PA+++</div>
+                <div class="flex justify-between mt-50"><button class="btn-add" onclick="addToCart(998, 'Spectra Block SPF 60 PA+++')">+ Add</button><span class="price">Rs. 998</span></div>
+            </div>
+            <div class="product-card" data-category="personal" data-price="248">
+                <div class="prod-img-container" onclick="openProductDetail('Tracnesan cream (Tretinoin 0.05%)')"><img src="images/trending/tracnesan-cream.png" class="prod-img"></div>
+                <span class="card-cat-badge">Skin Care</span><div class="prod-title">Tracnesan cream (Tretinoin 0.05%)</div>
+                <div class="flex justify-between mt-50"><button class="btn-add" onclick="addToCart(248, 'Tracnesan cream (Tretinoin 0.05%)')">+ Add</button><span class="price">Rs. 248</span></div>
             </div>
 
             <!-- Start Hiding from here for "Load More" -->
