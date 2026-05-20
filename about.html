@@ -124,8 +124,9 @@
             </a>
 
             <div class="search-container">
-                <input type="text" id="global-search" placeholder="Search medicines..." onkeydown="handleGlobalSearch(event)">
+                <input type="text" id="global-search" placeholder="Search medicines..." onkeyup="handleGlobalSearch(event)" autocomplete="off">
                 <i class="fas fa-search" onclick="triggerSearch()"></i>
+                <div id="search-suggestions" class="suggestions-box"></div>
             </div>
 
             <div class="nav-links">
