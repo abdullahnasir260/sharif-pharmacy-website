@@ -358,6 +358,7 @@ nav {
     }
 }
 
+
 @media (max-width: 480px) {
     .banner-card-small {
         padding: 12px 12px 12px 12px;
@@ -387,6 +388,9 @@ nav {
         border-radius: 45px;
     }
 }
+
+
+
 
 /* --- BLOG SECTION (NEW) --- */
 .blog-card { border-radius: 12px; overflow: hidden; background: #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
