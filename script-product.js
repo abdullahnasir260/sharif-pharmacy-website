@@ -16,7 +16,11 @@ const medicineList = [
     "Panadol Advance", "Panadol Extra", "Panadol CF", "Brufen 400mg", "Brufen Syrup", "Risek 20mg", "Risek 40mg", "Augmentin 625mg", "Augmentin 1g", "Augmentin Syrup", "Flagyl 400mg", "Flagyl Syrup", "Entamizole", "Entamizole DS", "Arinac Forte", "Arinac Syrup", "Kestine 10mg", "Softin Tablet", "Softin Syrup", "Rigix Tablet", "Rigix Drop", "Solvin Syrup", "Hydryllin Syrup", "Hydryllin Sugar Free", "Cac-1000 Gold", "Surbex Z", "Theragran-H", "Sangobion", "Fefol Vit", "Disprin Soluble", "Loprin 75mg", "Ascard 75mg", "Zantac 150mg", "Gravinate Tablet", "Gravinate Syrup", "Avil Tablet", "Avil Syrup", "Amoxil 250mg", "Amoxil 500mg", "Velosef 250mg", "Velosef 500mg", "Gaviscon Syrup", "Gaviscon Advance", "Septran DS", "Metodine", "Ponstan Forte", "Ponstan Syrup", "Calpol Syrup", "T-Day Tablet", "Fexo 120mg", "Fexo 180mg", "Montika 5mg", "Montika 10mg", "Getryl 2mg", "Getryl 4mg", "Glucophage 500mg", "Glucophage 850mg", "Daonil", "Jardiance 10mg", "Lipiget 10mg", "Lipiget 20mg", "Sifrol", "Lexotanil 3mg", "Xanax 0.5mg", "Inderal 10mg", "Voren 50mg", "Dicloran 50mg", "Nimesulide", "Synflex", "Xynosine Spray",
     "Pampers Small", "Pampers Medium", "Pampers Large", "Pampers XL", "Molfix S", "Molfix M", "Molfix L", "Canbebe S", "Canbebe M", "Canbebe L", "Lactogen 1", "Lactogen 2", "Lactogen 3", "Meiji BF-1", "Meiji BF-2", "Nan Pro 1", "Nan Pro 2", "Cerelac Rice", "Cerelac Wheat", "Cerelac 3 Fruits", "Woodwards Gripe Water", "Hamdard Naunehal", "Johnson Baby Soap", "Johnson Baby Powder", "Johnson Baby Oil", "Johnson Baby Shampoo", "Johnson Baby Lotion", "Pigeon Baby Wipes", "Mothercare Wipes", "Desitin Ointment", "Sudocrem 60g", "Sudocrem 125g", "Aveeno Baby", "Sebamed Baby", "Baby Feeder Standard", "Pigeon Feeder", "Avent Feeder", "Nuk Pacifier", "Baby Teether", "Cooling Gel Patch", "Bonnisan Syrup", "Digas Syrup", "Colic Aid Drops", "Baby Nail Cutter", "Baby Hair Brush", "Formula Dispenser", "Bottle Sterilizer", "Baby Bath Tub", "Baby Potty Seat", "Baby Cotton Buds",
     "Sensodyne Rapid Relief", "Sensodyne Multi Action", "Colgate Max Fresh", "Colgate Total", "Listerine Cool Mint", "Listerine Green Tea", "Gillette Blue II", "Gillette Mach 3", "Gillette Shaving Foam", "Lifebuoy Soap", "Lifebuoy Handwash", "Dettol Soap", "Dettol Handwash", "Dettol Liquid 250ml", "Safeguard Soap", "Lux Soap", "Sunsilk Shampoo", "Dove Shampoo", "Dove Conditioner", "Pantene Shampoo", "Head & Shoulders", "Clear Men Shampoo", "Nivea Cream", "Nivea Lotion", "Fair & Lovely", "Ponds Face Wash", "Garnier Face Wash", "Clean & Clear", "Strepsils Honey", "Strepsils Orange", "Vicks VapoRub", "Vicks Inhaler", "Polyfax Skin", "Polyfax Eye", "Pyodine Solution", "Pyodine Scrub", "Dermovate Cream", "Betnovate Cream", "Quench Cream", "Hydrozole",
-    "Omron BP M2", "Omron BP M3", "Beurer BP Monitor", "Accu-Chek Guide Strips", "Accu-Chek Active Strips", "On Call Plus Strips", "Glucometer Device", "Digital Thermometer", "Infrared Gun Thermometer", "Beurer Nebulizer", "Philips Nebulizer", "Hot Water Bottle", "Ice Bag", "Surgical Mask 50pc", "KN95 Mask", "Examination Gloves", "Cotton Roll 200g", "Crepe Bandage 4 inch", "Crepe Bandage 6 inch", "Surgical Tape", "First Aid Box", "Stethoscope", "Weight Scale Digital", "Weight Scale Manual", "Wheelchair Standard", "Walking Stick", "Commode Chair", "Pulse Oximeter", "Air Mattress", "Oxygen Cylinder Portable"
+    "Omron BP M2", "Omron BP M3", "Beurer BP Monitor", "Accu-Chek Guide Strips", "Accu-Chek Active Strips", "On Call Plus Strips", "Glucometer Device", "Digital Thermometer", "Infrared Gun Thermometer", "Beurer Nebulizer", "Philips Nebulizer", "Hot Water Bottle", "Ice Bag", "Surgical Mask 50pc", "KN95 Mask", "Examination Gloves", "Cotton Roll 200g", "Crepe Bandage 4 inch", "Crepe Bandage 6 inch", "Surgical Tape", "First Aid Box", "Stethoscope", "Weight Scale Digital", "Weight Scale Manual", "Wheelchair Standard", "Walking Stick", "Commode Chair", "Pulse Oximeter", "Air Mattress", "Oxygen Cylinder Portable",
+    "Dietary Supplement", "Nitrile Disposable Gloves", "Womens Multi Vitamins", "Liquid Hand Soap", "Gencell Collagen Peptides", "Nature's Bounty D3", "Vitamin D 1000 IU", "Physician's Daily Multi",
+    "Anagrow Hair Growth Bundle", "Certeza Nebulizer", "Life-care Walker", "Toothbrush",
+    "Herbiotics Collagen Powder with Biotin, Vitamin C & Vitamin D3", "Herbiotics Magnesium Glycinate 500mg",
+    "Spectra Block SPF 60 PA+++", "Tracnesan cream (Tretinoin 0.05%)"
 ];
 
 const PRODUCT_INFO = {
@@ -31,7 +35,38 @@ const PRODUCT_INFO = {
 // ==========================================
 let currentVisibleItems = 12; 
 
+function normalizeSearchBar() {
+    const searchContainer = document.querySelector('.search-container');
+    const searchInput = document.getElementById('global-search');
+    if (!searchContainer || !searchInput) return;
+
+    let suggestionsBox = document.getElementById('search-suggestions');
+    if (!suggestionsBox) {
+        suggestionsBox = document.createElement('div');
+        suggestionsBox.id = 'search-suggestions';
+        suggestionsBox.className = 'suggestions-box';
+        searchContainer.appendChild(suggestionsBox);
+    }
+
+    searchInput.setAttribute('autocomplete', 'off');
+    searchInput.setAttribute('placeholder', 'Search medicines...');
+    searchInput.onkeyup = handleGlobalSearch;
+    searchInput.onkeydown = function(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            triggerSearch();
+        }
+    };
+
+    const searchIcon = searchContainer.querySelector('.fa-search');
+    if (searchIcon) {
+        searchIcon.onclick = triggerSearch;
+        searchIcon.style.cursor = 'pointer';
+    }
+}
+
 window.onload = function() {
+    normalizeSearchBar();
     updateHeaderUI();
     checkURLSearch();
     initLoadMore();
@@ -72,17 +107,28 @@ function openProductDetail(name) {
 
     const cards = document.querySelectorAll('.product-card');
     let priceText = "Rs. 0";
+    let imageUrl = '';
     cards.forEach(card => {
-        if (card.querySelector('.prod-title').innerText.includes(name)) {
-            priceText = card.querySelector('.price').innerText;
+        const title = card.querySelector('.prod-title');
+        const price = card.querySelector('.price');
+        const img = card.querySelector('.prod-img');
+        const titleText = title ? title.innerText.trim() : '';
+
+        if (titleText && (titleText === name || titleText.includes(name) || name.includes(titleText))) {
+            if (price) priceText = price.innerText;
+            if (!imageUrl && img) imageUrl = img.src;
         }
     });
+
+    if (!imageUrl) {
+        imageUrl = `https://placehold.co/300x300?text=${encodeURIComponent(name.split(' ')[0])}`;
+    }
 
     const modalBody = document.getElementById('detail-modal-body');
     modalBody.innerHTML = `
         <div class="detail-grid">
             <div class="detail-img-box">
-                <img src="https://placehold.co/300x300?text=${name.split(' ')[0]}" alt="${name}">
+                <img src="${imageUrl}" alt="${name}">
             </div>
             <div class="detail-text-box">
                 <span class="detail-tag">Authentic Medicine</span>
